@@ -6,7 +6,7 @@ Every claim names its fact ID in src/data/facts.json. Lines with no fact IDs mak
 
 ## 1. Intro: team and project (0:00 to 0:18)
 
-- **0:00** cold-open. Picture: opening 0.2 s.
+- **0:00** cold-open. Picture: opening 0.2 s at 0.902x.
   - 0:01 "Every evening, in Dad's old workshop, a little lamp still turns itself on." [no fact claim]
 - **0:08** title-team (card: title-team). Picture: opening 7.6 s.
   - 0:08 "Hi, we're Hackstreet Boys! And this is Pieces of Home: a cozy adventure about the machines people left on the Moon and Mars!" [no fact claim]

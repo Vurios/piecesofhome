@@ -5,6 +5,7 @@
     {
       "id": "cold-open",
       "section": "intro",
+      "fit": "rate",
       "lines": [
         "intro-1"
       ],

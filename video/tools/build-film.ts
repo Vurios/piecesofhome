@@ -909,12 +909,8 @@ placed.forEach((p, bi) => {
     A(`tl.fromTo("#b-${p.beat.id} .page", { opacity: 0, y: 24, rotation: -0.6 }, { opacity: 1, y: 0, rotation: 0, duration: 0.5, ease: "power2.out" }, ${p.start});`);
   }
 });
-// The cold open drifts in slowly, like leaning closer to Dad's desk.
-const open = placed.find((p) => p.beat.id === "cold-open");
-if (open) {
-  A(`tl.fromTo("#cam", { scale: 1.0 }, { scale: 1.07, duration: ${open.dur}, ease: "sine.inOut" }, ${open.start});`);
-  A(`tl.to("#cam", { scale: 1, duration: ${XF}, ease: "power1.inOut" }, ${r3(open.start + open.dur - 0.1)});`);
-}
+// The cold open runs straight into the title shot (one continuous camera move), so it gets no push-in:
+// a push-in would have to snap back at the join and read as a second zoom-out.
 // A slow, warm push-in while the impact plays.
 const impact = placed.find((p) => p.beat.id === "impact");
 if (impact) {
