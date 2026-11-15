@@ -21,12 +21,12 @@ Every claim names its fact ID in src/data/facts.json. Lines with no fact IDs mak
 
 ## 0:10 to 0:20, Describe your idea (0:10 to 0:20)
 
-- **0:10** g-idea (card: g-idea). Picture: bench-trip-clean 3.4 s, moon-letter-clean 4.4 s, mars-devil-clean 9.7 s, send-a-light-clean 2.9 s, milo-eyes-clean 0.7 s, moon-letter-clean 14.6 s.
+- **0:10** g-idea (card: g-idea). Picture: bench-trip-clean 9.0 s, moon-letter-clean 4.4 s, mars-devil-clean 9.7 s, send-a-light-clean 2.9 s, milo-eyes-clean 0.7 s, moon-letter-clean 14.6 s.
   - 0:10 "Deliver Dad's letters to real machines on the Moon and Mars. Play the science. Rebuild his robot. Every fact and photo, straight from NASA." [facts: a11-lrrr-placed, opp-landing, ing-72]
 
 ## 0:20 to 0:30, Look into the future (0:20 to 0:29)
 
-- **0:20** g-future (card: g-future). Picture: coop-clean 9.2 s, milo-complete-clean 4.0 s, finale-dish-clean 15.6 s.
+- **0:20** g-future (card: g-future). Picture: coop-clean 9.2 s, milo-complete-clean 4.0 s, planet-stroll 3.0 s.
   - 0:20 "Imagine every classroom meeting these machines as friends, not junk." [no fact claim]
 - **0:25** g-end (card: g-end). Picture: paper page.
   - 0:25 "Play free today, at piecesofhome.pages.dev!" [no fact claim]

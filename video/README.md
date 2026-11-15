@@ -67,7 +67,9 @@ CUT=global30 python -I video/tools/mix.py
 (cd video/film-global30 && npx hyperframes render -o ../out/picture-global30.mp4)   # about 10 minutes
 node video/tools/finish.mjs global30
 CUT=global30 python -I video/tools/qa.py
-python -I video/tools/build-global-form.py                                          # docs/submission/global/GLOBAL_FORM.md
+npx tsx video/tools/build-cover.ts                                                  # the title page (docs/submission/cover/)
+python -I video/tools/build-global-form.py                                          # GLOBAL_FORM.md and the Word answers, title page first
+python -I video/tools/build-references.py                                           # NASA data and references (Word and references.md)
 ```
 
 The web copy at `public/trailer/` is the same film re-encoded smaller (CRF 23, AAC 128 kb/s) with a poster frame and WebVTT captions: `node video/tools/web-trailer.mjs`.

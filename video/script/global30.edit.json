@@ -3,6 +3,7 @@
   "gap": 0.2,
   "xf": 0.22,
   "tabs": false,
+  "mark": "Made with AI tools: AI voice, AI-assisted code",
   "beats": [
     {
       "id": "g-hi",
@@ -61,8 +62,8 @@
       "segments": [
         {
           "clip": "bench-trip-clean",
-          "from": 3.4,
-          "to": 4.9
+          "from": 9.0,
+          "to": 10.5
         },
         {
           "clip": "moon-letter-clean",
@@ -112,9 +113,9 @@
           "to": 6.0
         },
         {
-          "clip": "finale-dish-clean",
-          "from": 15.6,
-          "to": 17.8
+          "clip": "planet-stroll",
+          "from": 3.0,
+          "to": 5.4
         }
       ]
     },

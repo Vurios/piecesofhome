@@ -189,45 +189,45 @@
   "seconds": 6.068
  },
  "g-1": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "bright",
   "text": "Hi, we're Hackstreet Boys!",
-  "seconds": 1.76
+  "seconds": 1.751
  },
  "g-2": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "excited",
   "text": "Abandoned but not Forgotten. Some still work today!",
-  "seconds": 3.089
+  "seconds": 2.795
  },
  "g-3": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
-  "mood": "proud",
+  "mood": "excited",
   "text": "This is Pieces of Home. Left behind. Still shining.",
-  "seconds": 4.497
+  "seconds": 3.643
  },
  "g-4": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "excited",
   "text": "Deliver Dad's letters to real machines on the Moon and Mars. Play the science. Rebuild his robot. Every fact and photo, straight from NASA.",
-  "seconds": 9.556
+  "seconds": 8.673
  },
  "g-5": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
-  "mood": "tender",
+  "mood": "bright",
   "text": "Imagine every classroom meeting these machines as friends, not junk.",
-  "seconds": 4.115
+  "seconds": 3.807
  },
  "g-6": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "bright",
   "text": "Play free today, at pieces of home dot pages dot dev!",
-  "seconds": 3.876
+  "seconds": 3.445
  }
 }

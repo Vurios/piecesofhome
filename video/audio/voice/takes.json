@@ -1888,5 +1888,689 @@
     }
    ]
   }
+ ],
+ "g-1": [
+  {
+   "sentence": "Hi, we're Hack-street Boys!",
+   "kept": 3,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.4,
+     "said": "Hi, we're HackStreetBoys.",
+     "secs": 1.78,
+     "wps": 2.24,
+     "pitch": 5.94,
+     "loud": 4.33,
+     "over": 0.33
+    },
+    {
+     "take": 1,
+     "wer": 0.4,
+     "said": "Hi, we're Hack Street Boys.",
+     "secs": 1.99,
+     "wps": 2.01,
+     "pitch": 6.03,
+     "loud": 5.17,
+     "over": 0.54
+    },
+    {
+     "take": 2,
+     "wer": 0.4,
+     "said": "Hi, we're HackStreetBoys.",
+     "secs": 1.86,
+     "wps": 2.15,
+     "pitch": 5.15,
+     "loud": 4.23,
+     "over": 0.41
+    },
+    {
+     "take": 3,
+     "wer": 0.4,
+     "said": "Hi, we're Hack Street Boys.",
+     "secs": 1.89,
+     "wps": 2.12,
+     "pitch": 7.15,
+     "loud": 5.48,
+     "over": 0.44
+    },
+    {
+     "take": 4,
+     "wer": 0.4,
+     "said": "Hi, we're Hack Street Boys.",
+     "secs": 2.04,
+     "wps": 1.96,
+     "pitch": 5.86,
+     "loud": 5.15,
+     "over": 0.59
+    }
+   ]
+  }
+ ],
+ "g-2": [
+  {
+   "sentence": "Abandoned but not Forgotten.",
+   "kept": 3,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Abandoned, but not forgotten.",
+     "secs": 1.78,
+     "wps": 2.25,
+     "pitch": 5.23,
+     "loud": 3.71,
+     "over": 0.61
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Abandoned, but not forgotten.",
+     "secs": 1.94,
+     "wps": 2.07,
+     "pitch": 5.72,
+     "loud": 4.1,
+     "over": 0.77
+    },
+    {
+     "take": 2,
+     "wer": 0.25,
+     "said": "Abandoned but not forgotten. Dad!",
+     "secs": 2.74,
+     "wps": 1.46,
+     "pitch": 4.58,
+     "loud": 4.14,
+     "over": 1.57
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Abandoned, but not forgotten.",
+     "secs": 1.61,
+     "wps": 2.48,
+     "pitch": 6.3,
+     "loud": 4.26,
+     "over": 0.45
+    },
+    {
+     "take": 4,
+     "wer": 0.0,
+     "said": "Abandoned but not forgotten.",
+     "secs": 1.83,
+     "wps": 2.18,
+     "pitch": 5.1,
+     "loud": 3.97,
+     "over": 0.67
+    }
+   ]
+  },
+  {
+   "sentence": "Some still work today!",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Some still work today.",
+     "secs": 1.17,
+     "wps": 3.42,
+     "pitch": 5.37,
+     "loud": 3.53,
+     "over": 0.04
+    },
+    {
+     "take": 1,
+     "wer": 0.25,
+     "said": "Sun still work today.",
+     "secs": 1.18,
+     "wps": 3.39,
+     "pitch": 5.23,
+     "loud": 4.19,
+     "over": 0.05
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "Some still work today.",
+     "secs": 2.08,
+     "wps": 1.92,
+     "pitch": 6.62,
+     "loud": 4.88,
+     "over": 0.95
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Some still work today.",
+     "secs": 1.32,
+     "wps": 3.02,
+     "pitch": 5.1,
+     "loud": 4.33,
+     "over": 0.2
+    },
+    {
+     "take": 4,
+     "wer": 0.0,
+     "said": "Some still work today.",
+     "secs": 1.31,
+     "wps": 3.05,
+     "pitch": 5.42,
+     "loud": 3.97,
+     "over": 0.18
+    }
+   ]
+  }
+ ],
+ "g-3": [
+  {
+   "sentence": "This is Pieces of Home.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "This is Pieces of Home.",
+     "secs": 1.77,
+     "wps": 2.82,
+     "pitch": 7.19,
+     "loud": 4.72,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "This is Pieces of Home.",
+     "secs": 2.1,
+     "wps": 2.38,
+     "pitch": 5.52,
+     "loud": 4.89,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "This is pieces of home.",
+     "secs": 2.1,
+     "wps": 2.39,
+     "pitch": 5.73,
+     "loud": 5.5,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "This is Pieces of Home.",
+     "secs": 1.61,
+     "wps": 3.1,
+     "pitch": 6.09,
+     "loud": 5.75,
+     "over": 0.0
+    },
+    {
+     "take": 4,
+     "wer": 0.0,
+     "said": "This is pieces of home.",
+     "secs": 2.41,
+     "wps": 2.08,
+     "pitch": 5.59,
+     "loud": 5.03,
+     "over": 0.17
+    }
+   ]
+  },
+  {
+   "sentence": "Left behind.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Left behind.",
+     "secs": 0.95,
+     "wps": 2.11,
+     "pitch": 4.75,
+     "loud": 4.19,
+     "over": 0.21
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Left behind.",
+     "secs": 0.99,
+     "wps": 2.02,
+     "pitch": 7.13,
+     "loud": 4.67,
+     "over": 0.25
+    },
+    {
+     "take": 2,
+     "wer": 1.0,
+     "said": "Left behind. Left behind.",
+     "secs": 2.98,
+     "wps": 0.67,
+     "pitch": 4.67,
+     "loud": 5.04,
+     "over": 2.24
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Left behind.",
+     "secs": 1.07,
+     "wps": 1.87,
+     "pitch": 4.76,
+     "loud": 5.22,
+     "over": 0.33
+    },
+    {
+     "take": 4,
+     "wer": 1.0,
+     "said": "left behind, laved behind.",
+     "secs": 3.14,
+     "wps": 0.64,
+     "pitch": 6.11,
+     "loud": 5.12,
+     "over": 2.4
+    }
+   ]
+  },
+  {
+   "sentence": "Still shining.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.5,
+     "said": "as still shining.",
+     "secs": 1.67,
+     "wps": 1.2,
+     "pitch": 5.94,
+     "loud": 4.45,
+     "over": 0.93
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Still shining.",
+     "secs": 0.69,
+     "wps": 2.9,
+     "pitch": 8.58,
+     "loud": 3.87,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "Still shining.",
+     "secs": 0.96,
+     "wps": 2.09,
+     "pitch": 4.8,
+     "loud": 2.73,
+     "over": 0.22
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "still shining.",
+     "secs": 0.97,
+     "wps": 2.06,
+     "pitch": 6.28,
+     "loud": 3.7,
+     "over": 0.23
+    },
+    {
+     "take": 4,
+     "wer": 0.5,
+     "said": "Eek, still shining.",
+     "secs": 1.49,
+     "wps": 1.34,
+     "pitch": 6.56,
+     "loud": 3.49,
+     "over": 0.75
+    }
+   ]
+  }
+ ],
+ "g-4": [
+  {
+   "sentence": "Deliver Dad's letters to real machines on the Moon and Mars.",
+   "kept": 3,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.083,
+     "said": "delivered dad's letters to real machines on the moon and Mars.",
+     "secs": 4.1,
+     "wps": 2.69,
+     "pitch": 5.03,
+     "loud": 3.34,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Deliver dad's letters to real machines on the Moon and Mars.",
+     "secs": 3.22,
+     "wps": 3.42,
+     "pitch": 4.58,
+     "loud": 3.37,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "Deliver dad's letters to real machines on the Moon and Mars.",
+     "secs": 3.3,
+     "wps": 3.33,
+     "pitch": 4.45,
+     "loud": 3.37,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Deliver dad's letters to real machines on the moon and Mars.",
+     "secs": 3.43,
+     "wps": 3.2,
+     "pitch": 4.84,
+     "loud": 3.5,
+     "over": 0.0
+    },
+    {
+     "take": 4,
+     "wer": 0.0,
+     "said": "Deliver dad's letters to real machines on the Moon and Mars.",
+     "secs": 3.11,
+     "wps": 3.54,
+     "pitch": 4.44,
+     "loud": 3.44,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Play the science.",
+   "kept": 3,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.333,
+     "said": "Play the science. Ass.",
+     "secs": 1.93,
+     "wps": 1.55,
+     "pitch": 4.92,
+     "loud": 4.76,
+     "over": 1.0
+    },
+    {
+     "take": 1,
+     "wer": 0.667,
+     "said": "Play the Science! A. All.",
+     "secs": 2.77,
+     "wps": 1.08,
+     "pitch": 7.01,
+     "loud": 5.18,
+     "over": 1.84
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "Play the Science!",
+     "secs": 1.25,
+     "wps": 2.4,
+     "pitch": 4.06,
+     "loud": 3.92,
+     "over": 0.32
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Play the science!",
+     "secs": 1.15,
+     "wps": 2.61,
+     "pitch": 6.06,
+     "loud": 4.38,
+     "over": 0.22
+    },
+    {
+     "take": 4,
+     "wer": 0.0,
+     "said": "Play the science.",
+     "secs": 1.2,
+     "wps": 2.51,
+     "pitch": 6.67,
+     "loud": 4.2,
+     "over": 0.26
+    }
+   ]
+  },
+  {
+   "sentence": "Rebuild his robot.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Rebuild his robot.",
+     "secs": 1.47,
+     "wps": 2.04,
+     "pitch": 5.02,
+     "loud": 5.07,
+     "over": 0.54
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "rebuild his robot.",
+     "secs": 1.43,
+     "wps": 2.09,
+     "pitch": 4.39,
+     "loud": 4.9,
+     "over": 0.5
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "Rebuild his robot.",
+     "secs": 1.42,
+     "wps": 2.12,
+     "pitch": 4.25,
+     "loud": 3.81,
+     "over": 0.48
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Rebuild his robot.",
+     "secs": 1.62,
+     "wps": 1.85,
+     "pitch": 3.41,
+     "loud": 4.27,
+     "over": 0.69
+    },
+    {
+     "take": 4,
+     "wer": 0.0,
+     "said": "Rebuild his robot.",
+     "secs": 1.33,
+     "wps": 2.25,
+     "pitch": 3.72,
+     "loud": 4.61,
+     "over": 0.4
+    }
+   ]
+  },
+  {
+   "sentence": "Every fact and photo, straight from NASA.",
+   "kept": 3,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Every fact and photo straight from NASA.",
+     "secs": 2.66,
+     "wps": 2.63,
+     "pitch": 5.92,
+     "loud": 4.15,
+     "over": 0.13
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Every fact and photo straight from NASA.",
+     "secs": 2.81,
+     "wps": 2.49,
+     "pitch": 5.46,
+     "loud": 3.99,
+     "over": 0.29
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "Every fact and photo straight from NASA.",
+     "secs": 2.65,
+     "wps": 2.64,
+     "pitch": 5.17,
+     "loud": 4.24,
+     "over": 0.13
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Every fact and photo straight from NASA.",
+     "secs": 2.53,
+     "wps": 2.77,
+     "pitch": 5.42,
+     "loud": 3.82,
+     "over": 0.01
+    },
+    {
+     "take": 4,
+     "wer": 0.0,
+     "said": "Every fact and photo straight from NASA.",
+     "secs": 2.72,
+     "wps": 2.58,
+     "pitch": 5.8,
+     "loud": 5.02,
+     "over": 0.19
+    }
+   ]
+  }
+ ],
+ "g-5": [
+  {
+   "sentence": "Imagine every classroom meeting these machines as friends, not junk.",
+   "kept": 4,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Imagine every classroom meeting these machines as friends, not junk.",
+     "secs": 4.03,
+     "wps": 2.48,
+     "pitch": 4.41,
+     "loud": 3.66,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Imagine every classroom meeting these machines as friends, not junk.",
+     "secs": 4.49,
+     "wps": 2.23,
+     "pitch": 4.31,
+     "loud": 3.68,
+     "over": 0.15
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "Imagine every classroom meeting these machines as friends, not junk.",
+     "secs": 3.99,
+     "wps": 2.5,
+     "pitch": 4.59,
+     "loud": 3.78,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Imagine every classroom meeting these machines as friends, not junk.",
+     "secs": 4.38,
+     "wps": 2.28,
+     "pitch": 3.94,
+     "loud": 3.95,
+     "over": 0.04
+    },
+    {
+     "take": 4,
+     "wer": 0.0,
+     "said": "Imagine every classroom meeting these machines as friends, not junk.",
+     "secs": 4.1,
+     "wps": 2.44,
+     "pitch": 5.53,
+     "loud": 3.73,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "g-6": [
+  {
+   "sentence": "Play free today, at pieces of home dot pages dot dev!",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.455,
+     "said": "Play free today at piecesofhome.pages.dev.",
+     "secs": 3.45,
+     "wps": 3.19,
+     "pitch": 5.16,
+     "loud": 4.35,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.455,
+     "said": "Play free today at piecesofhome.pages.dev.",
+     "secs": 4.16,
+     "wps": 2.64,
+     "pitch": 5.04,
+     "loud": 4.86,
+     "over": 0.51
+    },
+    {
+     "take": 2,
+     "wer": 0.455,
+     "said": "Play free today at piecesofhome.pages.dev.",
+     "secs": 3.46,
+     "wps": 3.18,
+     "pitch": 4.67,
+     "loud": 4.13,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.455,
+     "said": "Play free today at piecesofhome.pages.dev.",
+     "secs": 3.7,
+     "wps": 2.97,
+     "pitch": 4.63,
+     "loud": 4.37,
+     "over": 0.05
+    },
+    {
+     "take": 4,
+     "wer": 0.455,
+     "said": "Play free today at piecesofhome.pages.dev.",
+     "secs": 3.73,
+     "wps": 2.95,
+     "pitch": 5.22,
+     "loud": 4.64,
+     "over": 0.08
+    }
+   ]
+  }
  ]
 }

@@ -10,11 +10,14 @@ source). Facts not marked "checked" are not in the game and are left out.
 """
 import json
 import re
+import sys
 from collections import OrderedDict
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from docx_cover import add_cover  # noqa: E402
+
 from docx import Document
-from docx.enum.section import WD_ORIENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
@@ -170,6 +173,8 @@ def table(headers, widths_cm, rows, size=8.5):
     t = doc.add_table(rows=1, cols=len(headers))
     t.autofit = False
     borders(t)
+    for i, w in enumerate(widths_cm):
+        t.columns[i].width = Cm(w)
     for i, h in enumerate(headers):
         c = t.rows[0].cells[i]
         c.width = Cm(widths_cm[i])
@@ -197,12 +202,7 @@ def table(headers, widths_cm, rows, size=8.5):
 
 # ---------------------------------------------------------------- document
 doc = Document()
-sec = doc.sections[0]
-sec.orientation = WD_ORIENT.PORTRAIT
-sec.page_width, sec.page_height = Cm(21.0), Cm(29.7)
-sec.left_margin = sec.right_margin = Cm(1.5)
-sec.top_margin = Cm(1.3)
-sec.bottom_margin = Cm(1.2)
+sec = add_cover(doc, ROOT / "docs/submission/cover/cover-references.jpg")
 st = doc.styles["Normal"]
 st.font.name = BODY
 st.font.size = Pt(10)

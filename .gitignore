@@ -71,3 +71,6 @@ START_HERE.md
 video/audio/voice/backup-*/
 __pycache__/
 .claude/
+docs/submission/global/*.docx
+docs/submission/cover/
+docs/submission/global/*.pdf

@@ -14,13 +14,14 @@ Pieces of Home
 Pieces of Home is a free, cozy 3D browser game that tells the stories of the machines NASA left on the Moon, on Mars and far out in space. Remi finds the unsent letters of their late dad, who loved these machines, and delivers them inside his handmade models of real landing sites: Apollo 11's mirrors at Tranquility Base, the Apollo 15 Moon buggy, Surveyor 3, Opportunity, Ingenuity, and finally Voyager 1. At each site, players learn the true story of the hardware and play with the science that made it work, like bouncing light off corner mirrors, then rebuild Dad's robot, Milo, one part at a time. Every number in the game comes from a checked list of facts, each with a NASA, JPL or NSSDCA source link, and real NASA photos carry their exact credits. It plays solo or with up to three friends in kid-safe co-op with no chat, right in the browser. These machines are not junk: some still work, and every one of them carries a story that can spark the next generation of explorers.
 ```
 
-## 3. Project Demonstration (required): public video link, 30 seconds or less
+## 3. Project Demonstration (required): a 30-second video or no more than 7 slides
 
-Use one of these (all public, no login):
+Paste one link only (all public, no login):
 
-- **Recommended:** the trailer page on our own site, plays in the browser: https://piecesofhome.pages.dev/trailer/
-- The MP4 on GitHub Releases: https://github.com/Vurios/piecesofhome/releases/latest/download/HackstreetBoys_PiecesOfHome_30s.mp4
-- Or a YouTube link, if the team uploads it (see MY_TASKS.md).
+- **Recommended, the 30-second video:** the trailer page on our own site, plays in the browser: https://piecesofhome.pages.dev/trailer/
+- The same video as an MP4 on GitHub Releases: https://github.com/Vurios/piecesofhome/releases/latest/download/HackstreetBoys_PiecesOfHome_30s.mp4
+- **If the team picks slides instead:** our 7-slide deck as a PDF (title and introduction on slide 1): https://piecesofhome.pages.dev/deck/PiecesOfHome_Slides.pdf
+- Or a YouTube link, if the team uploads the video (see MY_TASKS.md).
 
 ## 4. Project (required): final project link
 
@@ -133,7 +134,7 @@ Add one row per line: Link Text, then Link URL.
 
 Optional, for completeness: every fact in the game links to its own NASA, JPL or NSSDCA page (49 pages, listed in src/data/facts.json and at the end of this file).
 
-## 8. Space Agency Partner & Other Data · 35 rows
+## 8. Space Agency Partner & Other Data · 36 rows
 
 No space agency partner data is used. Other resources and tools, each with its license:
 
@@ -160,20 +161,21 @@ No space agency partner data is used. Other resources and tools, each with its l
 | 19 | Chatterbox TTS 0.1.4 (Resemble AI), PyTorch | https://github.com/resemble-ai/chatterbox | MIT (Chatterbox, Perth); BSD-3-Clause (PyTorch) |
 | 20 | python-docx | https://github.com/python-openxml/python-docx | MIT |
 | 21 | Kokoro-82M v1.0 (ONNX), kokoro-js | https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX | Apache-2.0 |
-| 22 | FFmpeg, ffprobe | https://ffmpeg.org | LGPL/GPL (used as a program) |
-| 23 | NumPy | https://numpy.org | BSD-3-Clause |
-| 24 | python-pptx | https://github.com/scanny/python-pptx | MIT |
-| 25 | Kenney Impact Sounds (sound effects) | https://kenney.nl/assets/impact-sounds | CC0 |
-| 26 | Kenney RPG Audio (sound effects) | https://kenney.nl/assets/rpg-audio | CC0 |
-| 27 | Kenney Interface Sounds (sound effects) | https://kenney.nl/assets/interface-sounds | CC0 |
-| 28 | Versilian Community Sample Library (instrument samples) | https://github.com/sgossner/VCSL | CC0 |
-| 29 | Claude Code (AI coding assistant, Anthropic) | https://www.anthropic.com/claude-code | Commercial tool (disclosed in AI_USE.md) |
-| 30 | Chatterbox TTS model weights (Resemble AI) | https://huggingface.co/ResembleAI/chatterbox | MIT |
-| 31 | Vite | https://github.com/vitejs/vite | MIT |
-| 32 | TypeScript | https://github.com/microsoft/TypeScript | Apache-2.0 |
-| 33 | Vitest | https://github.com/vitest-dev/vitest | MIT |
-| 34 | Playwright | https://github.com/microsoft/playwright | Apache-2.0 |
-| 35 | Cloudflare Workers and Wrangler (hosting, free tier) | https://github.com/cloudflare/workers-sdk | MIT or Apache-2.0 |
+| 22 | Whisper small.en (OpenAI), Transformers, librosa | https://huggingface.co/openai/whisper-small.en | MIT (Whisper); Apache-2.0 (Transformers); ISC (librosa) |
+| 23 | FFmpeg, ffprobe | https://ffmpeg.org | LGPL/GPL (used as a program) |
+| 24 | NumPy | https://numpy.org | BSD-3-Clause |
+| 25 | python-pptx | https://github.com/scanny/python-pptx | MIT |
+| 26 | Kenney Impact Sounds (sound effects) | https://kenney.nl/assets/impact-sounds | CC0 |
+| 27 | Kenney RPG Audio (sound effects) | https://kenney.nl/assets/rpg-audio | CC0 |
+| 28 | Kenney Interface Sounds (sound effects) | https://kenney.nl/assets/interface-sounds | CC0 |
+| 29 | Versilian Community Sample Library (instrument samples) | https://github.com/sgossner/VCSL | CC0 |
+| 30 | Claude Code (AI coding assistant, Anthropic) | https://www.anthropic.com/claude-code | Commercial tool (disclosed in AI_USE.md) |
+| 31 | Chatterbox TTS model weights (Resemble AI) | https://huggingface.co/ResembleAI/chatterbox | MIT |
+| 32 | Vite | https://github.com/vitejs/vite | MIT |
+| 33 | TypeScript | https://github.com/microsoft/TypeScript | Apache-2.0 |
+| 34 | Vitest | https://github.com/vitest-dev/vitest | MIT |
+| 35 | Playwright | https://github.com/microsoft/playwright | Apache-2.0 |
+| 36 | Cloudflare Workers and Wrangler (hosting, free tier) | https://github.com/cloudflare/workers-sdk | MIT or Apache-2.0 |
 
 ## 9. Checkboxes
 
@@ -219,7 +221,7 @@ Each link was opened with a plain web request (no login). 200 means it opened; s
 - 200: https://github.com/steveruizok/perfect-freehand
 - 200: https://github.com/itfoundry/kalam
 - 200: https://github.com/undercasetype/Fraunces
-- 200: https://www.brailleinstitute.org/freefont/
+- 202: https://www.brailleinstitute.org/freefont/
 - 200: https://github.com/mozilla/zilla-slab
 - 200: https://opendyslexic.org
 - 200: https://github.com/donmccurdy/glTF-Transform
@@ -232,6 +234,7 @@ Each link was opened with a plain web request (no login). 200 means it opened; s
 - 200: https://github.com/resemble-ai/chatterbox
 - 200: https://github.com/python-openxml/python-docx
 - 200: https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX
+- 200: https://huggingface.co/openai/whisper-small.en
 - 200: https://ffmpeg.org
 - 200: https://numpy.org
 - 200: https://github.com/scanny/python-pptx
@@ -249,6 +252,8 @@ Each link was opened with a plain web request (no login). 200 means it opened; s
 - 200: https://piecesofhome.pages.dev
 - 200: https://github.com/Vurios/piecesofhome
 - 200: https://piecesofhome.pages.dev/trailer/
+- 200: https://piecesofhome.pages.dev/deck/PiecesOfHome_Slides.pdf
+- 200: https://github.com/Vurios/piecesofhome/releases/latest/download/HackstreetBoys_PiecesOfHome_30s.mp4
 
 ## Appendix: every fact's source page
 

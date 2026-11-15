@@ -1099,7 +1099,7 @@ const html = `<!doctype html>
       .meta .chal { font-size: 24px; color: var(--dad-ink); }
       #end .fine { position: absolute; left: 130px; right: 90px; bottom: 26px; max-width: none; font-size: 19px; text-align: left; }
       .spark { position: absolute; font-size: 44px; color: var(--amber); }
-      #mark { position: absolute; right: 22px; bottom: 20px; padding: 7px 14px 8px; background: rgba(251, 246, 236, 0.94); border: 2px dashed var(--amber-deep); border-radius: 8px; transform: rotate(-2deg); font-family: var(--hand); font-weight: 700; font-size: 22px; color: var(--ink-soft); }
+      #mark { position: absolute; right: 16px; bottom: 10px; padding: 4px 11px 5px; background: rgba(251, 246, 236, 0.94); border: 2px dashed var(--amber-deep); border-radius: 7px; transform: rotate(-1.5deg); font-family: var(--hand); font-weight: 700; font-size: 16px; color: var(--ink-soft); }
       .hi { position: absolute; left: 90px; top: 300px; padding: 22px 40px 26px; display: flex; flex-direction: column; }
       .hi small { font-family: var(--hand); font-size: 44px; color: var(--ink-soft); }
       .hi b { font-family: var(--head); font-weight: 700; font-size: 100px; line-height: 1; color: var(--ink); white-space: nowrap; }

@@ -1072,3 +1072,15 @@ The mentions of that game in docs, prompts and one code comment are reworded as 
 
 **Alternatives considered:** A cloud voice (costs money and would send the script out), more exaggeration in Chatterbox (it drags the words out), slowing footage to fill beats (the team dislikes slow motion), hiding the HUD in the live demo too (judges should see the real interface there).
 
+
+## 109. Final videos and the submission documents (2026-11-15)
+
+**Decision:**
+1. **Demo intro.** The cold open now ends on the exact frame where the title shot starts (it plays at 0.9x to keep its length), so the camera pulls back from the workshop to the planet once, in one move. The push-in on the cold open is gone, because it had to snap back at the join and read as a second zoom-out.
+2. **30-second cut.** A new livelier voice (best of five takes per line, checked by Whisper), no pop-up panels on screen (the journey board became the rocket lift-off, the Voyager finder became Remi walking home on the tiny planet), and a small, always-visible "Made with AI tools: AI voice, AI-assisted code" mark, as the global SI rules ask for videos.
+3. **Slides link.** The seven-slide deck is served as a PDF at https://piecesofhome.pages.dev/deck/PiecesOfHome_Slides.pdf, so the team can use it as the global demonstration instead of the video (at most 7 slides, title and introduction on slide 1).
+4. **Documents.** A title page in the game's desk style (`video/tools/build-cover.ts`) opens the NASA data and references document (`build-references.py`, every dataset, NASA image and sound, and all 103 checked facts with their sources) and the global submission answers (`build-global-form.py` now also writes a Word file in the form's own sections and order).
+
+**Why:** The team asked for the double zoom to go, for the 30-second video to be finished and calmer, for a references document, the global answers as a Word file, and a title page.
+
+**Alternatives considered:** Moving the title shot later (it would reuse footage the demo uses and start mid-move), hosting the slides only on GitHub Releases (a PDF on our own site opens in the browser), a full-screen watermark (it would cover the game).
