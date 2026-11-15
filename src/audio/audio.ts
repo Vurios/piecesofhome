@@ -130,7 +130,9 @@ export class AudioEngine {
     if (!this.ctx) {
       const Ctor = window.AudioContext ?? (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
       if (!Ctor) return;
-      this.ctx = new Ctor({ latencyHint: "interactive" });
+      // "balanced" opens the sound device about ten times faster than "interactive" on Windows
+      // (300 to 600 ms there, inside the light switch press), for a few ms more latency.
+      this.ctx = new Ctor({ latencyHint: "balanced" });
       this.build(this.ctx);
     }
     if (this.ctx.state !== "running") {

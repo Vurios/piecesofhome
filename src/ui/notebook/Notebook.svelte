@@ -72,8 +72,14 @@
   /** Shrinks a page's writing a little when it would not fit, so no page ever scrolls. */
   function fit(node: HTMLElement): { destroy(): void } {
     const inner = node.firstElementChild as HTMLElement | null;
+    // Setting the zoom resizes the writing, which tells the observer again: without this
+    // check every page re-measured itself every frame while the notebook was open.
+    let measured = "";
     const apply = (): void => {
       if (!inner) return;
+      const key = `${node.clientWidth}x${node.clientHeight}|${inner.childElementCount}|${inner.textContent?.length ?? 0}|${inner.querySelectorAll("img").length}`;
+      if (key === measured) return;
+      measured = key;
       inner.style.zoom = "1";
       const style = getComputedStyle(node);
       const room = node.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
@@ -84,13 +90,17 @@
     observer.observe(node);
     if (inner) observer.observe(inner);
     // Pictures and fonts can change the height once they load.
-    node.addEventListener("load", apply, true);
-    void document.fonts?.ready.then(apply);
+    const reload = (): void => {
+      measured = "";
+      apply();
+    };
+    node.addEventListener("load", reload, true);
+    void document.fonts?.ready.then(reload);
     apply();
     return {
       destroy() {
         observer.disconnect();
-        node.removeEventListener("load", apply, true);
+        node.removeEventListener("load", reload, true);
       },
     };
   }
