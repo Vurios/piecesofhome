@@ -10,7 +10,7 @@ Our entry for the **NASA Space Apps Challenge 2026**, challenge *Abandoned but n
 
 **30-second video:** https://piecesofhome.pages.dev/trailer/ (plays in the browser)
 
-**Full demo video (4 min 25 s) and the 30-second video as MP4 files:** https://github.com/Vurios/piecesofhome/releases/latest
+**Full demo video (4 min 17 s) and the 30-second video as MP4 files:** https://github.com/Vurios/piecesofhome/releases/latest
 
 **Made by team Hackstreet Boys.** [How we used AI](AI_USE.md).
 

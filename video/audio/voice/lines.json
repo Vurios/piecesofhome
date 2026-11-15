@@ -4,28 +4,28 @@
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "hushed",
   "text": "Every evening, in Dad's old workshop, a little lamp still turns itself on.",
-  "seconds": 4.803
+  "seconds": 4.442
  },
  "intro-2": {
   "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "bright",
   "text": "Hi, we're Hackstreet Boys! And this is Pieces of Home: a cozy adventure about the machines people left on the Moon and Mars!",
-  "seconds": 8.683
+  "seconds": 8.021
  },
  "prob-1": {
   "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "curious",
   "text": "Out there, far from home, people left lots of machines behind: mirrors, rovers, landers, even a tiny helicopter!",
-  "seconds": 7.109
+  "seconds": 6.592
  },
  "prob-2": {
   "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "excited",
   "text": "Some are still working! Scientists still bounce lasers off the mirrors that Apollo 11 left in nineteen sixty-nine.",
-  "seconds": 6.611
+  "seconds": 6.131
  },
  "prob-3": {
   "voice": "chatterbox, voice from spark-quick",
@@ -46,14 +46,14 @@
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "bright",
   "text": "Our answer? A game with a heart! Remi's late dad loved these machines. He built tiny models of their landing sites, and wrote each one a letter.",
-  "seconds": 9.359
+  "seconds": 8.679
  },
  "sol-2": {
   "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "bright",
   "text": "Now Remi, alone or with up to three friends, delivers his letters, uncovers each machine's true story, and rebuilds his little robot, Milo, one piece at a time.",
-  "seconds": 10.105
+  "seconds": 9.336
  },
  "sol-3": {
   "voice": "chatterbox, voice from spark-quick",
@@ -67,14 +67,14 @@
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "excited",
   "text": "Let's play! This is the real game. Pull the chain, and the adventure begins!",
-  "seconds": 6.156
+  "seconds": 5.7
  },
  "demo-2": {
   "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "bright",
   "text": "Dad's workbench is full of glass domes. Each one holds a model of a real landing site, labeled: model, not to scale.",
-  "seconds": 7.647
+  "seconds": 7.096
  },
  "demo-3": {
   "voice": "chatterbox, voice from spark-quick",
@@ -88,7 +88,7 @@
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "bright",
   "text": "At Tranquility Base, Remi delivers Dad's letter to the mirrors that Apollo 11 left behind.",
-  "seconds": 5.141
+  "seconds": 4.741
  },
  "demo-5": {
   "voice": "chatterbox, voice from spark-quick",
@@ -109,7 +109,7 @@
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "proud",
   "text": "Bring the part home, and Milo gets brand new eyes! Left behind, still answering.",
-  "seconds": 5.455
+  "seconds": 5.055
  },
  "demo-8": {
   "voice": "chatterbox, voice from spark-quick",
@@ -123,7 +123,7 @@
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "excited",
   "text": "Ingenuity was planned for up to five test flights. It flew seventy-two times!",
-  "seconds": 5.414
+  "seconds": 4.984
  },
  "demo-10": {
   "voice": "chatterbox, voice from spark-quick",
@@ -137,56 +137,56 @@
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "bright",
   "text": "Dad's notebook keeps everything you discover, with real NASA pictures and their credits.",
-  "seconds": 4.968
+  "seconds": 4.604
  },
  "demo-12": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "awe",
   "text": "And at the very end, Dad's backyard dish turns toward Voyager 1. On November eighteenth, twenty twenty-six, Voyager 1 becomes the first human-made object one light-day from Earth.",
-  "seconds": 12.545
+  "seconds": 10.772
  },
  "feat-1": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
-  "mood": "proud",
+  "mood": "bright",
   "text": "Every number in the game comes from a list of checked facts, each with a source link. And every model is clearly labeled.",
-  "seconds": 7.073
+  "seconds": 6.791
  },
  "feat-2": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "bright",
   "text": "There are captions for every line, a printable Field Guide for classrooms, and a calmer motion setting. Even the music is made in code!",
-  "seconds": 7.604
+  "seconds": 7.518
  },
  "data-1": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
-  "mood": "proud",
+  "mood": "bright",
   "text": "And it's built on real NASA data. Photos from the NASA Image and Video Library and Photojournal. A Moon map from NASA's Scientific Visualization Studio. Globe pins at real landing sites. And JPL Horizons data that follows Voyager 1, day by day.",
-  "seconds": 17.366
+  "seconds": 15.068
  },
  "data-2": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "excited",
   "text": "You can even hear real wind on Mars, recorded by the Perseverance rover!",
-  "seconds": 4.396
+  "seconds": 4.053
  },
  "imp-1": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "proud",
   "text": "Pieces of Home helps players see these machines as stories, not junk. Left behind, but still answering. Still teaching. And Voyager 1? Still sending.",
-  "seconds": 10.251
+  "seconds": 9.861
  },
  "imp-2": {
-  "voice": "chatterbox, voice from af_heart",
+  "voice": "chatterbox, voice from spark-quick",
   "model": "Chatterbox TTS 0.1.4 (ResembleAI/chatterbox)",
   "mood": "bright",
   "text": "It's free, and ready to play right now, at pieces of home dot pages dot dev. Thanks for watching!",
-  "seconds": 7.235
+  "seconds": 6.068
  },
  "g-1": {
   "voice": "chatterbox, voice from af_heart",

@@ -19,7 +19,7 @@ VOICE = VIDEO / "audio" / "voice"
 RAW = VOICE / "raw"
 MAX_WPS = 3.7
 TARGET_WPS = 3.45
-# A sleepy read loses the listener: lines under MIN_WPS are lifted toward LIFT_WPS (1.18x at most).
+# A sleepy read loses the listener: lines under MIN_WPS are lifted toward LIFT_WPS (1.08x at most; more smears short words).
 MIN_WPS = 3.0
 LIFT_WPS = 3.2
 
@@ -50,7 +50,7 @@ def main() -> None:
         if wps > MAX_WPS:
             k = max(0.85, TARGET_WPS / wps)
         elif wps < MIN_WPS:
-            k = min(1.18, LIFT_WPS / wps)
+            k = min(1.08, LIFT_WPS / wps)
         # A line with a hard time slot (the 30-second cut) is sped up a little to fit it: 1.15x at most, or the line's maxSpeed.
         if line.get("maxSeconds") and secs / k > line["maxSeconds"]:
             k = min(line.get("maxSpeed", 1.15), secs / line["maxSeconds"])

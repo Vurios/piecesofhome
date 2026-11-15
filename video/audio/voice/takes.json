@@ -1320,5 +1320,573 @@
     }
    ]
   }
+ ],
+ "demo-12": [
+  {
+   "sentence": "And at the very end, Dad's backyard dish turns toward Voyager 1.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "And, at the very end, Dad's backyard dish turns toward Voyager 1.",
+     "secs": 4.75,
+     "wps": 2.53,
+     "pitch": 4.73,
+     "loud": 3.68,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "And at the very end, Dad's backyard dish turns toward Voyager 1.",
+     "secs": 4.35,
+     "wps": 2.76,
+     "pitch": 3.82,
+     "loud": 3.75,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "On November eighteenth, twenty twenty-six, Voyager 1 becomes the first human-made object one light-day from Earth.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.059,
+     "said": "On November 18, 2026, Voyager 1 becomes the first human-made object, one light day from Earth.",
+     "secs": 7.8,
+     "wps": 2.44,
+     "pitch": 4.29,
+     "loud": 3.97,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.059,
+     "said": "On November 18, 2026, Voyager 1 becomes the first human-made object, one light day from Earth.",
+     "secs": 7.02,
+     "wps": 2.71,
+     "pitch": 4.83,
+     "loud": 3.79,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "feat-1": [
+  {
+   "sentence": "Every number in the game comes from a list of checked facts, each with a source link.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Every number in the game comes from a list of checked facts, each with a source link.",
+     "secs": 4.29,
+     "wps": 3.96,
+     "pitch": 4.61,
+     "loud": 3.59,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Every number in the game comes from a list of checked facts, each with a source link.",
+     "secs": 4.19,
+     "wps": 4.06,
+     "pitch": 5.14,
+     "loud": 4.06,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "And every model is clearly labeled.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "and every model is clearly labeled.",
+     "secs": 2.35,
+     "wps": 2.56,
+     "pitch": 5.09,
+     "loud": 3.31,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "and every model is clearly labeled.",
+     "secs": 2.78,
+     "wps": 2.16,
+     "pitch": 5.36,
+     "loud": 3.64,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "feat-2": [
+  {
+   "sentence": "There are captions for every line, a printable Field Guide for classrooms, and a calmer motion setting.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "There are captions for every line, a printable field guide for classrooms, and a calmer motion setting.",
+     "secs": 5.38,
+     "wps": 3.16,
+     "pitch": 3.98,
+     "loud": 3.91,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.353,
+     "said": "a printable field guide for classrooms, and a calmer motion setting.",
+     "secs": 5.62,
+     "wps": 3.03,
+     "pitch": 5.22,
+     "loud": 4.09,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Even the music is made in code!",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Even the music is made in code.",
+     "secs": 1.88,
+     "wps": 3.73,
+     "pitch": 4.34,
+     "loud": 3.33,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Even the music is made in code.",
+     "secs": 1.84,
+     "wps": 3.8,
+     "pitch": 3.67,
+     "loud": 3.03,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "data-1": [
+  {
+   "sentence": "And it's built on real NASA data.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "and it's built on real NASA data.",
+     "secs": 2.16,
+     "wps": 3.24,
+     "pitch": 3.92,
+     "loud": 3.26,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "and it's built on real NASA data.",
+     "secs": 2.01,
+     "wps": 3.48,
+     "pitch": 4.24,
+     "loud": 3.27,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Photos from the NASA Image and Video Library and Photojournal.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.3,
+     "said": "from the NASA Image and Video Library and Photo Journal.",
+     "secs": 3.58,
+     "wps": 2.79,
+     "pitch": 5.2,
+     "loud": 3.5,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.2,
+     "said": "Photos from the NASA Image and Video Library and Photo Journal.",
+     "secs": 3.68,
+     "wps": 2.71,
+     "pitch": 4.86,
+     "loud": 3.64,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "A Moon map from NASA's Scientific Visualization Studio.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "A moon map from NASA's Scientific Visualization Studio.",
+     "secs": 3.85,
+     "wps": 2.08,
+     "pitch": 5.65,
+     "loud": 3.41,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "a moon map from NASA's Scientific Visualization Studio.",
+     "secs": 3.44,
+     "wps": 2.32,
+     "pitch": 5.59,
+     "loud": 4.21,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Globe pins at real landing sites.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "globe pins at real landing sites.",
+     "secs": 2.0,
+     "wps": 3.01,
+     "pitch": 4.99,
+     "loud": 3.49,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.167,
+     "said": "low pins at real landing sites.",
+     "secs": 2.36,
+     "wps": 2.54,
+     "pitch": 4.93,
+     "loud": 4.33,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "And JPL Horizons data that follows Voyager 1, day by day.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "and JPL Horizons data that follows Voyager 1, day by day.",
+     "secs": 4.28,
+     "wps": 2.57,
+     "pitch": 4.17,
+     "loud": 3.99,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "and JPL Horizons data that follows Voyager 1, day by day.",
+     "secs": 4.09,
+     "wps": 2.69,
+     "pitch": 5.02,
+     "loud": 3.98,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "data-2": [
+  {
+   "sentence": "You can even hear real wind on Mars, recorded by the Perseverance rover!",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "You can even hear real wind on Mars, recorded by the Perseverance rover.",
+     "secs": 4.22,
+     "wps": 3.08,
+     "pitch": 5.1,
+     "loud": 4.36,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "You can even hear real wind on Mars, recorded by the Perseverance rover.",
+     "secs": 4.37,
+     "wps": 2.97,
+     "pitch": 5.37,
+     "loud": 3.7,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "imp-1": [
+  {
+   "sentence": "Pieces of Home helps players see these machines as stories, not junk.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Pieces of Home helps players see these machines as stories, not junk.",
+     "secs": 4.16,
+     "wps": 2.88,
+     "pitch": 5.15,
+     "loud": 3.94,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Pieces of Home helps players see these machines as stories, not junk.",
+     "secs": 4.22,
+     "wps": 2.84,
+     "pitch": 4.79,
+     "loud": 4.23,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Left behind, but still answering.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "left behind, but still answering.",
+     "secs": 2.01,
+     "wps": 2.48,
+     "pitch": 5.57,
+     "loud": 4.69,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "left behind but still answering.",
+     "secs": 2.11,
+     "wps": 2.37,
+     "pitch": 5.53,
+     "loud": 4.69,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Still teaching.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.5,
+     "said": "No, still teaching.",
+     "secs": 1.62,
+     "wps": 1.23,
+     "pitch": 6.93,
+     "loud": 6.32,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Still teaching!",
+     "secs": 0.84,
+     "wps": 2.38,
+     "pitch": 4.75,
+     "loud": 5.67,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "And Voyager 1?",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "And Voyager 1?",
+     "secs": 1.51,
+     "wps": 1.98,
+     "pitch": 5.33,
+     "loud": 3.58,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "and Voyager 1.",
+     "secs": 1.32,
+     "wps": 2.27,
+     "pitch": 4.84,
+     "loud": 3.65,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Still sending.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.5,
+     "said": "No, sending.",
+     "secs": 1.18,
+     "wps": 1.69,
+     "pitch": 6.2,
+     "loud": 4.43,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Still sending.",
+     "secs": 1.26,
+     "wps": 1.59,
+     "pitch": 5.36,
+     "loud": 4.23,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "imp-2": [
+  {
+   "sentence": "It's free, and ready to play right now, at pieces of home dot pages dot dev.",
+   "kept": 3,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.294,
+     "said": "It's free and ready to play right now at piecesofhome.pages.dev.",
+     "secs": 4.97,
+     "wps": 3.22,
+     "pitch": 5.39,
+     "loud": 3.92,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.294,
+     "said": "It's free and ready to play right now at piecesofhome.pages.dev.",
+     "secs": 4.93,
+     "wps": 3.24,
+     "pitch": 5.09,
+     "loud": 4.48,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.294,
+     "said": "It's free and ready to play right now at piecesopome.pages.dev.",
+     "secs": 6.29,
+     "wps": 2.54,
+     "pitch": 5.66,
+     "loud": 4.28,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.118,
+     "said": "It's free and ready to play right now at pieces of home.pages.dev.",
+     "secs": 5.35,
+     "wps": 2.99,
+     "pitch": 5.08,
+     "loud": 4.07,
+     "over": 0.0
+    },
+    {
+     "take": 4,
+     "wer": 0.294,
+     "said": "It's free and ready to play right now at piecesofhome.pages.dev.",
+     "secs": 4.79,
+     "wps": 3.34,
+     "pitch": 6.07,
+     "loud": 4.13,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Thanks for watching!",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Thanks for watching!",
+     "secs": 0.94,
+     "wps": 3.18,
+     "pitch": 5.59,
+     "loud": 4.11,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Thanks for watching!",
+     "secs": 0.94,
+     "wps": 3.18,
+     "pitch": 6.88,
+     "loud": 5.52,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "Thanks for watching!",
+     "secs": 0.98,
+     "wps": 3.07,
+     "pitch": 4.16,
+     "loud": 4.34,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Thanks for watching!",
+     "secs": 1.02,
+     "wps": 2.94,
+     "pitch": 4.25,
+     "loud": 3.8,
+     "over": 0.0
+    },
+    {
+     "take": 4,
+     "wer": 0.0,
+     "said": "Thanks for watching!",
+     "secs": 1.02,
+     "wps": 2.93,
+     "pitch": 5.0,
+     "loud": 4.25,
+     "over": 0.0
+    }
+   ]
+  }
  ]
 }
