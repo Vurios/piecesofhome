@@ -5,12 +5,15 @@
  *
  *   npx tsx video/tools/build-cover.ts
  *
- * Writes docs/submission/cover/PiecesOfHome_Title_Page.pdf (A4) and a PNG and a
- * JPEG per document label (cover-*.png, cover-*.jpg), which build-references.py and
- * build-global-form.py put on page one of their Word files.
+ * Writes the standalone title page in landscape 16:9 (for screens, Zoom
+ * backgrounds and team photos): docs/submission/cover/PiecesOfHome_Title_Page.pdf,
+ * PiecesOfHome_Title_Page.png (3840x2160) and PiecesOfHome_Title_Page_1920x1080.png
+ * and .jpg. Also a portrait A4 PNG and JPEG per document label (cover-*.png,
+ * cover-*.jpg), which build-references.py and build-global-form.py put on page
+ * one of their Word files.
  * Run build-slides.ts first (it makes the game stills and copies the fonts).
  */
-import { copyFileSync, mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
@@ -140,12 +143,99 @@ ${postage("position:absolute")}
 <div class="abs foot"><div class="links"><span>Play free: piecesofhome.pages.dev</span><span class="code">github.com/Vurios/piecesofhome</span></div><p class="fine">NASA did not make, sponsor or endorse this project. NASA photos inside carry their credits.</p></div>
 </body></html>`;
 
+/** The standalone title page, landscape 16:9: for screens, Zoom backgrounds and team photos. */
+const landscape = () => `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Pieces of Home: title page</title>
+<style>
+@font-face { font-family: "Kalam"; src: url("../local/slides/fonts/kalam-latin-700-normal.woff2"); font-weight: 700; }
+@font-face { font-family: "Kalam"; src: url("../local/slides/fonts/kalam-latin-400-normal.woff2"); font-weight: 400; }
+@font-face { font-family: "Atkinson Hyperlegible Next"; src: url("../local/slides/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2"); font-weight: 200 800; }
+@font-face { font-family: "Zilla Slab"; src: url("../local/slides/fonts/zilla-slab-latin-700-normal.woff2"); font-weight: 700; }
+@page { size: 1920px 1080px; margin: 0; }
+:root { --paper: #fbf6ec; --ink: #2b2622; --soft: #62574d; --dad: #233f73; --amber: #f2a541; --amberd: #b8661c; --clay: #c0573e; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; }
+body { position: relative; overflow: hidden; font-family: "Atkinson Hyperlegible Next", sans-serif; color: var(--ink);
+  background:
+    radial-gradient(ellipse 55% 60% at 22% 18%, rgba(255, 214, 150, .42), transparent 70%),
+    radial-gradient(ellipse 50% 45% at 100% 100%, rgba(29, 30, 60, .38), transparent 70%),
+    repeating-linear-gradient(0deg, transparent 0 214px, rgba(50, 25, 8, .45) 214px 217px),
+    repeating-linear-gradient(90deg, rgba(70, 35, 12, .07) 0 2px, transparent 2px 7px, rgba(255, 230, 190, .05) 7px 9px, transparent 9px 16px),
+    linear-gradient(180deg, #9a6438, #85532c);
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.abs { position: absolute; }
+.tape { position: absolute; z-index: 3; width: 150px; height: 36px; background: rgba(242, 222, 170, .9); box-shadow: 0 1px 2px rgba(0, 0, 0, .12); }
+.topband { left: 70px; right: 70px; top: 38px; display: flex; justify-content: space-between; align-items: center; }
+.label { padding: 9px 20px 8px; background: var(--paper); border-radius: 7px; box-shadow: 0 8px 18px rgba(0, 0, 0, .3); font-family: "Zilla Slab"; font-weight: 700; font-size: 21px; letter-spacing: .16em; text-transform: uppercase; color: var(--clay); transform: rotate(-1.5deg); }
+.label i { display: inline-block; width: 11px; height: 11px; margin: 0 13px 3px 0; border-radius: 50%; background: var(--clay); }
+.presents { font-family: "Kalam"; font-weight: 700; font-size: 30px; color: #fbe9cc; text-shadow: 0 2px 8px rgba(0, 0, 0, .35); }
+.pola { left: 76px; top: 122px; width: 900px; padding: 16px 16px 10px; background: #fffdf8; box-shadow: 0 22px 46px rgba(0, 0, 0, .4); transform: rotate(-2.2deg); }
+.pola img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.pola figcaption { padding: 9px 4px 0; font-family: "Kalam"; font-weight: 700; font-size: 28px; }
+.pola figcaption span { margin-left: 10px; font-family: "Atkinson Hyperlegible Next"; font-weight: 400; font-size: 17px; color: var(--soft); }
+.postage { left: 880px; top: 92px; width: 132px; z-index: 4; filter: drop-shadow(0 10px 12px rgba(0, 0, 0, .35)); transform: rotate(8deg); }
+.postage .pv { fill: var(--paper); font-family: "Zilla Slab"; font-weight: 700; font-size: 15px; letter-spacing: 2px; }
+.letter { left: 1010px; top: 128px; width: 840px; padding: 40px 54px 34px 62px; z-index: 2; border-radius: 8px; transform: rotate(1deg);
+  background: repeating-linear-gradient(transparent 0 41px, rgba(92, 115, 147, .17) 41px 42px), var(--paper);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, .42); }
+.letter::before { content: ""; position: absolute; left: 36px; top: 0; bottom: 0; width: 3px; background: rgba(192, 87, 62, .28); }
+.kick { font-family: "Zilla Slab"; font-weight: 700; font-size: 20px; letter-spacing: .18em; text-transform: uppercase; color: var(--amberd); }
+h1 { margin-top: 4px; font-family: "Zilla Slab"; font-weight: 700; font-size: 104px; line-height: .98; letter-spacing: -.01em; white-space: nowrap; }
+h1 em { font-style: normal; color: var(--amberd); }
+.line { margin-top: 14px; max-width: 610px; font-family: "Kalam"; font-weight: 400; font-size: 31px; line-height: 1.33; color: #3c342d; }
+.line b { font-weight: 700; color: var(--dad); }
+.tags { display: flex; gap: 14px; margin-top: 18px; }
+.tags span { padding: 6px 20px 4px; background: #fffdf8; border: 3px solid var(--amberd); border-radius: 28px; font-family: "Kalam"; font-weight: 700; font-size: 23px; }
+.tags span:nth-child(2) { transform: rotate(-2deg); } .tags span:nth-child(3) { transform: rotate(1.5deg); }
+.challenge { margin-top: 24px; padding-top: 16px; border-top: 3px dashed rgba(98, 87, 77, .35); display: grid; grid-template-columns: auto 1fr; gap: 3px 18px; align-items: baseline; }
+.challenge .chip { grid-row: span 2; padding: 4px 12px; border: 3px solid var(--clay); border-radius: 5px; font-family: "Zilla Slab"; font-weight: 700; font-size: 16px; letter-spacing: .12em; text-transform: uppercase; color: var(--clay); white-space: nowrap; }
+.challenge b { font-family: "Kalam"; font-weight: 700; font-size: 34px; line-height: 1.05; }
+.challenge small { max-width: 400px; font-size: 19px; color: var(--soft); }
+.postmark { position: absolute; right: 26px; bottom: -44px; width: 168px; height: 168px; z-index: 4; transform: rotate(-12deg); opacity: .92; }
+.postmark circle { fill: none; stroke: var(--clay); stroke-width: 5; } .postmark circle + circle { stroke-width: 3; }
+.postmark text { fill: var(--clay); font-family: "Zilla Slab"; font-weight: 700; } .postmark .arc { font-size: 17px; letter-spacing: 3px; } .postmark .mid { font-size: 34px; }
+.doodle { position: absolute; height: auto; } .doodle path { fill: none; stroke: var(--dad); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.team { left: 70px; top: 744px; width: 1780px; padding: 20px 40px 18px; border-radius: 10px; background: var(--paper); box-shadow: inset 0 9px 0 var(--amber), 0 18px 36px rgba(0, 0, 0, .35); transform: rotate(-.4deg); }
+.team h2 { display: flex; justify-content: space-between; align-items: baseline; font-family: "Zilla Slab"; font-weight: 700; font-size: 19px; letter-spacing: .16em; text-transform: uppercase; color: var(--amberd); }
+.team h2 span { font-family: "Kalam"; font-size: 24px; letter-spacing: 0; text-transform: none; color: var(--soft); }
+.team ul { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 30px; margin-top: 12px; }
+.team li { display: grid; grid-template-columns: 50px 1fr; column-gap: 14px; align-items: center; }
+.team li i { grid-row: span 2; width: 50px; height: 50px; border-radius: 50%; background: var(--c); border: 3px solid var(--ink); display: grid; place-items: center; font-family: "Zilla Slab"; font-style: normal; font-weight: 700; font-size: 18px; color: var(--paper); }
+.team li b { font-size: 22px; line-height: 1.15; }
+.team li small { font-size: 16.5px; line-height: 1.25; color: var(--soft); }
+.foot { left: 70px; right: 70px; bottom: 34px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+.links { display: flex; gap: 16px; }
+.links span { padding: 10px 22px 9px; background: var(--amber); border: 3px solid var(--ink); border-radius: 14px; box-shadow: 0 5px 0 var(--ink); font-size: 22px; font-weight: 700; white-space: nowrap; }
+.links span.code { background: var(--paper); font-weight: 600; }
+.fine { max-width: 420px; text-align: right; font-size: 15px; line-height: 1.35; color: #f6e6cc; text-shadow: 0 1px 3px rgba(0, 0, 0, .4); }
+</style></head><body>
+<div class="abs topband"><span class="label"><i></i>NASA Space Apps Challenge 2026</span><span class="presents">Team Hackstreet Boys presents</span></div>
+<figure class="abs pola"><span class="tape" style="left:42%;top:-17px;transform:rotate(-3deg)"></span><img src="../local/slides/img/title.jpg" alt="The title screen of Pieces of Home" /><figcaption>The real game, free in your browser<span>(game capture)</span></figcaption></figure>
+${postage("position:absolute")}
+<section class="abs letter">
+  <span class="tape" style="left:-40px;top:20px;transform:rotate(-38deg)"></span>
+  <p class="kick">A cozy 3D browser game</p>
+  <h1>Pieces <em>of</em> Home</h1>
+  <p class="line">Deliver Dad's letters to the machines people left on the <b>Moon</b> and <b>Mars</b>, learn their true stories, and rebuild his little robot, Milo.</p>
+  <div class="tags"><span>Free to play</span><span>1 to 4 players</span><span>Ages 10 and up</span></div>
+  <div class="challenge"><span class="chip">Our challenge</span><b>Abandoned but not Forgotten</b><small>Storytelling about NASA's Discarded Equipment on the Moon and Mars</small></div>
+  ${doodle("lrrr", "right:34px;top:292px;width:132px;transform:rotate(-6deg);opacity:.8", 11)}
+</section>
+${postmark("left:836px;top:566px;right:auto;bottom:auto;z-index:5")}
+<section class="abs team">
+  <h2>Made by Team Hackstreet Boys<span>Six friends, one tiny planet</span></h2>
+  <ul>${TEAM.map(([n, r, c]) => `<li style="--c:${c}"><i>${n.split(" ")[0]![0]}${n.split(" ").slice(-1)[0]![0]}</i><b>${n}</b><small>${r}</small></li>`).join("")}</ul>
+</section>
+<div class="abs foot"><div class="links"><span>Play free: piecesofhome.pages.dev</span><span class="code">github.com/Vurios/piecesofhome</span></div><p class="fine">NASA did not make, sponsor or endorse this project. Picture: the real game.</p></div>
+</body></html>`;
+
+const DASH = /[–—]/;
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 794, height: 1123 }, deviceScaleFactor: 3 });
 const p = await ctx.newPage();
 for (const [key, label] of LABELS) {
   const html = page(label);
-  if (/[–—]/.test(html)) throw new Error("dash in cover text");
+  if (DASH.test(html)) throw new Error("dash in cover text");
   const file = join(OUT, `cover-${key}.html`);
   writeFileSync(file, html);
   await p.goto(`file:///${file.replace(/\\/g, "/")}`);
@@ -153,8 +243,25 @@ for (const [key, label] of LABELS) {
   await p.waitForTimeout(200);
   await p.screenshot({ path: join(OUT, `cover-${key}.png`), type: "png" });
   await p.screenshot({ path: join(OUT, `cover-${key}.jpg`), type: "jpeg", quality: 90 });
-  if (key === "documentation") await p.pdf({ path: join(OUT, "PiecesOfHome_Title_Page.pdf"), width: "210mm", height: "297mm", printBackground: true, margin: { top: "0", right: "0", bottom: "0", left: "0" } });
   console.log(`cover-${key}.png`);
 }
+// The standalone title page: landscape 16:9, at Zoom's background size and at 4K, and as a 16:9 PDF.
+const wide = landscape();
+if (DASH.test(wide)) throw new Error("dash in title page text");
+const wideFile = join(OUT, "title-page.html");
+writeFileSync(wideFile, wide);
+for (const [scale, name] of [[1, "PiecesOfHome_Title_Page_1920x1080.png"], [2, "PiecesOfHome_Title_Page.png"]] as const) {
+  const c2 = await browser.newContext({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: scale });
+  const p2 = await c2.newPage();
+  await p2.goto(`file:///${wideFile.replace(/\\/g, "/")}`);
+  await p2.evaluate(() => document.fonts.ready);
+  await p2.waitForTimeout(300);
+  await p2.screenshot({ path: join(OUT, name), type: "png" });
+  if (scale === 1) {
+    await p2.screenshot({ path: join(OUT, "PiecesOfHome_Title_Page_1920x1080.jpg"), type: "jpeg", quality: 92 });
+    await p2.pdf({ path: join(OUT, "PiecesOfHome_Title_Page.pdf"), width: "1920px", height: "1080px", printBackground: true, margin: { top: "0", right: "0", bottom: "0", left: "0" } });
+  }
+  await c2.close();
+  console.log(name);
+}
 await browser.close();
-copyFileSync(join(OUT, "cover-documentation.png"), join(OUT, "PiecesOfHome_Title_Page.png"));
