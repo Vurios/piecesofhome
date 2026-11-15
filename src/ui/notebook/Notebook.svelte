@@ -69,38 +69,70 @@
     return CHAPTERS.find((c) => c.spread === spread.id)?.stamp ?? null;
   }
 
-  /** Shrinks a page's writing a little when it would not fit, so no page ever scrolls. */
+  /**
+   * Reading `document.fonts.ready` makes the browser work out every style on the
+   * page first (about a tenth of a second here), so every page shares one answer.
+   */
+  let fontsReady: Promise<unknown> | null = null;
+  function whenFontsReady(): Promise<unknown> {
+    fontsReady ??= document.fonts?.status === "loaded" ? Promise.resolve() : (document.fonts?.ready ?? Promise.resolve());
+    return fontsReady;
+  }
+
+  /**
+   * Shrinks a page's writing a little when it would not fit, so no page ever scrolls.
+   * Pages are measured together once a frame: all the reads, then all the writes. Measured
+   * one by one, each page made the browser lay the whole notebook out again, and a
+   * spread with many pages stalled the opening for a moment.
+   */
+  type Fitter = { node: HTMLElement; inner: HTMLElement; measured: string };
+  const fitQueue = new Set<Fitter>();
+  let fitFrame = 0;
+  function queueFit(f: Fitter): void {
+    fitQueue.add(f);
+    if (!fitFrame) fitFrame = requestAnimationFrame(flushFits);
+  }
+  function flushFits(): void {
+    fitFrame = 0;
+    const jobs = [...fitQueue];
+    fitQueue.clear();
+    const keyed = jobs
+      .filter((f) => f.node.isConnected)
+      .map((f) => ({ f, key: `${f.node.clientWidth}x${f.node.clientHeight}|${f.inner.childElementCount}|${f.inner.textContent?.length ?? 0}|${f.inner.querySelectorAll("img").length}` }))
+      .filter(({ f, key }) => key !== f.measured);
+    if (keyed.length === 0) return;
+    for (const { f } of keyed) f.inner.style.zoom = "1";
+    const sizes = keyed.map(({ f }) => {
+      const style = getComputedStyle(f.node);
+      return { room: f.node.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom), need: f.inner.scrollHeight };
+    });
+    keyed.forEach(({ f, key }, i) => {
+      const { room, need } = sizes[i]!;
+      if (room > 0 && need > room) f.inner.style.zoom = String(Math.max(0.72, (room / need) * 0.99));
+      // Setting the zoom resizes the writing, which tells the observer again; the key stops that loop.
+      f.measured = key;
+    });
+  }
   function fit(node: HTMLElement): { destroy(): void } {
     const inner = node.firstElementChild as HTMLElement | null;
-    // Setting the zoom resizes the writing, which tells the observer again: without this
-    // check every page re-measured itself every frame while the notebook was open.
-    let measured = "";
-    const apply = (): void => {
-      if (!inner) return;
-      const key = `${node.clientWidth}x${node.clientHeight}|${inner.childElementCount}|${inner.textContent?.length ?? 0}|${inner.querySelectorAll("img").length}`;
-      if (key === measured) return;
-      measured = key;
-      inner.style.zoom = "1";
-      const style = getComputedStyle(node);
-      const room = node.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
-      const need = inner.scrollHeight;
-      if (room > 0 && need > room) inner.style.zoom = String(Math.max(0.72, (room / need) * 0.99));
-    };
-    const observer = new ResizeObserver(apply);
+    if (!inner) return { destroy() {} };
+    const f: Fitter = { node, inner, measured: "" };
+    const observer = new ResizeObserver(() => queueFit(f));
     observer.observe(node);
-    if (inner) observer.observe(inner);
+    observer.observe(inner);
     // Pictures and fonts can change the height once they load.
     const reload = (): void => {
-      measured = "";
-      apply();
+      f.measured = "";
+      queueFit(f);
     };
     node.addEventListener("load", reload, true);
-    void document.fonts?.ready.then(reload);
-    apply();
+    void whenFontsReady().then(reload);
+    queueFit(f);
     return {
       destroy() {
         observer.disconnect();
         node.removeEventListener("load", reload, true);
+        fitQueue.delete(f);
       },
     };
   }
