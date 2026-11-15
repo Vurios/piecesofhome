@@ -1,0 +1,283 @@
+{
+  "title": "Pieces of Home: local demo video",
+  "file": "HackstreetBoys_PiecesOfHome_Demo.mp4",
+  "note": "Every narration line names the fact IDs (src/data/facts.json) behind its claims. Lines with no facts make no factual claim beyond what the game itself does. Timings come from the recorded narration; see demo.md after a build. 'text' is what the voice reads (numbers spelled out); 'caption' is what the screen shows.",
+  "style": "A warm, bright storyteller with a smile in the voice: hushed and curious for the mystery, excited for the discoveries, tender for Dad, proud at the end. Lively pace, never rushed.",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "1. Intro: team and project",
+      "lines": [
+        {
+          "id": "intro-1",
+          "text": "Every evening, in Dad's old workshop, a little lamp still turns itself on.",
+          "facts": [],
+          "mood": "hushed",
+          "visual": "loader: Dad's notebook draws the lamp, the light switch, the real 3D workshop lights up"
+        },
+        {
+          "id": "intro-2",
+          "text": "Hi, we're Hackstreet Boys! And this is Pieces of Home: a cozy adventure about the machines people left on the Moon and Mars!",
+          "facts": [],
+          "mood": "bright",
+          "visual": "the game's title screen, team credits along the bottom"
+        }
+      ]
+    },
+    {
+      "id": "problem",
+      "label": "2. The problem",
+      "lines": [
+        {
+          "id": "prob-1",
+          "text": "Out there, far from home, people left lots of machines behind: mirrors, rovers, landers, even a tiny helicopter!",
+          "facts": [
+            "a11-lrrr-placed",
+            "lrv-first-drive",
+            "sur3-landing",
+            "vik1-first",
+            "opp-landing",
+            "ing-final"
+          ],
+          "mood": "curious",
+          "visual": "taped NASA photos with exact credits"
+        },
+        {
+          "id": "prob-2",
+          "text": "Some are still working! Scientists still bounce lasers off the mirrors that Apollo 11 left in nineteen sixty-nine.",
+          "caption": "Some are still working! Scientists still bounce lasers off the mirrors that Apollo 11 left in 1969.",
+          "facts": [
+            "lrrr-still-used",
+            "a11-lrrr-placed"
+          ],
+          "mood": "excited",
+          "visual": "a mirror panel on the Moon (Apollo 14's, captioned), Apollo 11 notes"
+        },
+        {
+          "id": "prob-3",
+          "text": "Others went quiet. To most kids, they just look like old junk, very far away. But every one of them has a true story.",
+          "facts": [
+            "opp-last-contact",
+            "vik1-last"
+          ],
+          "mood": "tender",
+          "visual": "Opportunity's last look back, PIA22928"
+        },
+        {
+          "id": "prob-4",
+          "text": "Our challenge is called Abandoned but not Forgotten. It asks: how can we tell the stories of NASA's machines on the Moon and Mars?",
+          "facts": [],
+          "mood": "bright",
+          "visual": "the full challenge title"
+        }
+      ]
+    },
+    {
+      "id": "solution",
+      "label": "3. Our solution",
+      "lines": [
+        {
+          "id": "sol-1",
+          "text": "Our answer? A game with a heart! Remi's late dad loved these machines. He built tiny models of their landing sites, and wrote each one a letter.",
+          "facts": [],
+          "mood": "bright",
+          "visual": "workshop bench with the glass domes and Milo"
+        },
+        {
+          "id": "sol-2",
+          "text": "Now Remi, alone or with up to three friends, delivers his letters, uncovers each machine's true story, and rebuilds his little robot, Milo, one piece at a time.",
+          "facts": [],
+          "mood": "bright",
+          "visual": "Remi and friends in the workshop, three steps"
+        },
+        {
+          "id": "sol-3",
+          "text": "It's free, it plays right in your web browser, and it's made for curious players aged ten and up.",
+          "caption": "It's free, it plays right in your web browser, and it's made for curious players aged 10 and up.",
+          "facts": [],
+          "mood": "bright",
+          "visual": "four paper tags along the edges, a rocket trip behind"
+        }
+      ]
+    },
+    {
+      "id": "demo",
+      "label": "4. Live demo",
+      "lines": [
+        {
+          "id": "demo-1",
+          "text": "Let's play! This is the real game. Pull the chain, and the adventure begins!",
+          "facts": [],
+          "mood": "excited",
+          "visual": "title, pull chain"
+        },
+        {
+          "id": "demo-2",
+          "text": "Dad's workbench is full of glass domes. Each one holds a model of a real landing site, labeled: model, not to scale.",
+          "facts": [],
+          "mood": "bright",
+          "visual": "bench domes with labels"
+        },
+        {
+          "id": "demo-3",
+          "text": "Pick the Moon, and whoosh! A little rocket flies you there.",
+          "facts": [],
+          "mood": "excited",
+          "visual": "dome dive and rocket trip"
+        },
+        {
+          "id": "demo-4",
+          "text": "At Tranquility Base, Remi delivers Dad's letter to the mirrors that Apollo 11 left behind.",
+          "facts": [
+            "a11-lrrr-placed"
+          ],
+          "mood": "bright",
+          "visual": "deliver the letter at the retroreflector"
+        },
+        {
+          "id": "demo-5",
+          "text": "Then a true story card pops up, with a real NASA photo, and every fact links to its source.",
+          "facts": [
+            "a11-lrrr-placed"
+          ],
+          "mood": "bright",
+          "visual": "true story card with NASA photo and credit, zoomed in"
+        },
+        {
+          "id": "demo-6",
+          "text": "Next, you try the big idea yourself: send a beam of light from Earth to the mirrors, and catch it coming back!",
+          "facts": [
+            "lrrr-still-used",
+            "a11-lrrr-cubes"
+          ],
+          "mood": "excited",
+          "visual": "Send a Light: the laser comes back"
+        },
+        {
+          "id": "demo-7",
+          "text": "Bring the part home, and Milo gets brand new eyes! Left behind, still answering.",
+          "facts": [],
+          "mood": "proud",
+          "visual": "Milo's eyes and the stamp"
+        },
+        {
+          "id": "demo-8",
+          "text": "On Mars, Opportunity was planned to work for ninety Martian days. It kept going for more than fourteen years! Sometimes the wind blew dust off its solar panels, and gave it more power.",
+          "caption": "On Mars, Opportunity was planned to work for 90 Martian days. It kept going for more than 14 years! Sometimes the wind blew dust off its solar panels, and gave it more power.",
+          "facts": [
+            "opp-planned",
+            "opp-years",
+            "opp-cleaning"
+          ],
+          "mood": "excited",
+          "visual": "Meridiani Planum, the dust devil cleans the panels; 90 days to 14 years counter"
+        },
+        {
+          "id": "demo-9",
+          "text": "Ingenuity was planned for up to five test flights. It flew seventy-two times!",
+          "caption": "Ingenuity was planned for up to five test flights. It flew 72 times!",
+          "facts": [
+            "ing-plan",
+            "ing-72"
+          ],
+          "mood": "excited",
+          "visual": "Valinor Hills, Ingenuity; 5 to 72 counter"
+        },
+        {
+          "id": "demo-10",
+          "text": "Friends can join with a private room code. No chat, just emotes and kind preset phrases, so it stays safe for kids.",
+          "facts": [],
+          "mood": "bright",
+          "visual": "two players, emotes"
+        },
+        {
+          "id": "demo-11",
+          "text": "Dad's notebook keeps everything you discover, with real NASA pictures and their credits.",
+          "facts": [],
+          "mood": "bright",
+          "visual": "notebook pages"
+        },
+        {
+          "id": "demo-12",
+          "text": "And at the very end, Dad's backyard dish turns toward Voyager 1. On November eighteenth, twenty twenty-six, Voyager 1 becomes the first human-made object one light-day from Earth.",
+          "caption": "And at the very end, Dad's backyard dish turns toward Voyager 1. On November 18, 2026, Voyager 1 becomes the first human-made object one light-day from Earth.",
+          "facts": [
+            "v1-light-day"
+          ],
+          "mood": "awe",
+          "visual": "finale: the dish at night"
+        }
+      ]
+    },
+    {
+      "id": "features",
+      "label": "5. Features",
+      "lines": [
+        {
+          "id": "feat-1",
+          "text": "Every number in the game comes from a list of checked facts, each with a source link. And every model is clearly labeled.",
+          "facts": [],
+          "mood": "bright",
+          "visual": "fact card source link, dome labels"
+        },
+        {
+          "id": "feat-2",
+          "text": "There are captions for every line, a printable Field Guide for classrooms, and a calmer motion setting. Even the music is made in code!",
+          "facts": [],
+          "mood": "bright",
+          "visual": "Field Guide, settings, audio"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "label": "5b. NASA data we used",
+      "lines": [
+        {
+          "id": "data-1",
+          "text": "And it's built on real NASA data. Photos from the NASA Image and Video Library and Photojournal. A Moon map from NASA's Scientific Visualization Studio. Globe pins at real landing sites. And JPL Horizons data that follows Voyager 1, day by day.",
+          "facts": [
+            "a11-site",
+            "opp-site",
+            "v1-light-time"
+          ],
+          "mood": "bright",
+          "visual": "data cards with names and sources"
+        },
+        {
+          "id": "data-2",
+          "text": "You can even hear real wind on Mars, recorded by the Perseverance rover!",
+          "facts": [
+            "rec-mars-wind"
+          ],
+          "mood": "excited",
+          "visual": "sound cards"
+        }
+      ]
+    },
+    {
+      "id": "impact",
+      "label": "6. Impact",
+      "lines": [
+        {
+          "id": "imp-1",
+          "text": "Pieces of Home helps players see these machines as stories, not junk. Left behind, but still answering. Still teaching. And Voyager 1? Still sending.",
+          "facts": [
+            "lrrr-still-used",
+            "v1-light-day"
+          ],
+          "mood": "proud",
+          "visual": "Milo complete, the stamps"
+        },
+        {
+          "id": "imp-2",
+          "text": "It's free, and ready to play right now, at pieces of home dot pages dot dev. Thanks for watching!",
+          "caption": "It's free, and ready to play right now, at piecesofhome.pages.dev. Thanks for watching!",
+          "facts": [],
+          "mood": "bright",
+          "visual": "end card with the play link, best on a laptop or desktop"
+        }
+      ]
+    }
+  ]
+}

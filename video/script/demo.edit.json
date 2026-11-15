@@ -1,0 +1,427 @@
+{
+  "note": "Edit decision list for the demo video. Each beat plays its narration lines in order (lead before, gap between, tail after) over its visual. Clip times are seconds into video/capture/<clip>.mp4. A card is an overlay drawn by the film (video/tools/build-film.ts). The last segment of a beat stretches or trims to fit the beat; with \"fit\": \"rate\" it slows down instead of running into footage the next beat uses. Neighbouring segments crossfade. No footage is used twice. Outside the live demo the B-roll is the clean capture (HUD hidden); every live demo shot keeps the real HUD and lets its action finish at normal speed.",
+  "gap": 0.35,
+  "beats": [
+    {
+      "id": "cold-open",
+      "section": "intro",
+      "lines": [
+        "intro-1"
+      ],
+      "lead": 1.6,
+      "tail": 1.2,
+      "min": 8.2,
+      "segments": [
+        {
+          "clip": "opening",
+          "from": 0.2,
+          "to": 7.6
+        }
+      ]
+    },
+    {
+      "id": "title-team",
+      "section": "intro",
+      "lines": [
+        "intro-2"
+      ],
+      "lead": 0.5,
+      "tail": 1.4,
+      "card": "title-team",
+      "segments": [
+        {
+          "clip": "opening",
+          "from": 7.6,
+          "to": 16.4
+        }
+      ]
+    },
+    {
+      "id": "machines",
+      "section": "problem",
+      "lines": [
+        "prob-1"
+      ],
+      "lead": 0.8,
+      "tail": 0.8,
+      "card": "machines",
+      "paper": true
+    },
+    {
+      "id": "mirrors",
+      "section": "problem",
+      "lines": [
+        "prob-2"
+      ],
+      "lead": 0.3,
+      "tail": 0.9,
+      "card": "mirrors",
+      "paper": true
+    },
+    {
+      "id": "quiet",
+      "section": "problem",
+      "lines": [
+        "prob-3"
+      ],
+      "lead": 0.3,
+      "tail": 0.9,
+      "card": "quiet",
+      "paper": true
+    },
+    {
+      "id": "challenge",
+      "section": "problem",
+      "lines": [
+        "prob-4"
+      ],
+      "lead": 0.3,
+      "tail": 1.6,
+      "card": "challenge",
+      "paper": true
+    },
+    {
+      "id": "answer",
+      "section": "solution",
+      "lines": [
+        "sol-1",
+        "sol-2"
+      ],
+      "lead": 0.5,
+      "tail": 0.6,
+      "segments": [
+        {
+          "clip": "opening",
+          "from": 20.6,
+          "to": 25.4
+        },
+        {
+          "clip": "test-walk-clean",
+          "from": 0.2,
+          "to": 5.4
+        },
+        {
+          "clip": "milo-eyes-clean",
+          "from": 7.0,
+          "to": 25.0
+        }
+      ]
+    },
+    {
+      "id": "tags",
+      "section": "solution",
+      "lines": [
+        "sol-3"
+      ],
+      "lead": 0.3,
+      "tail": 1.2,
+      "card": "tags",
+      "segments": [
+        {
+          "clip": "valinor-flight-clean",
+          "from": 0.2,
+          "to": 3.9
+        },
+        {
+          "clip": "planet-stroll",
+          "from": 0.4,
+          "to": 8.1
+        }
+      ]
+    },
+    {
+      "id": "demo-title",
+      "section": "demo",
+      "lines": [
+        "demo-1"
+      ],
+      "lead": 0.8,
+      "tail": 0.5,
+      "card": "demo-label",
+      "segments": [
+        {
+          "clip": "opening",
+          "from": 16.4,
+          "to": 21.9
+        }
+      ]
+    },
+    {
+      "id": "demo-domes",
+      "section": "demo",
+      "lines": [
+        "demo-2"
+      ],
+      "lead": 0.3,
+      "tail": 0.5,
+      "segments": [
+        {
+          "clip": "opening",
+          "from": 28.8,
+          "to": 34.6
+        },
+        {
+          "clip": "bench-trip",
+          "from": 0.2,
+          "to": 3.6
+        }
+      ]
+    },
+    {
+      "id": "demo-trip",
+      "section": "demo",
+      "lines": [
+        "demo-3"
+      ],
+      "lead": 0.3,
+      "tail": 0.3,
+      "min": 10.5,
+      "segments": [
+        {
+          "clip": "bench-trip",
+          "from": 3.6,
+          "to": 14.8
+        }
+      ]
+    },
+    {
+      "id": "demo-letter",
+      "section": "demo",
+      "lines": [
+        "demo-4"
+      ],
+      "lead": 0.3,
+      "tail": 0.5,
+      "min": 10.6,
+      "segments": [
+        {
+          "clip": "moon-letter",
+          "from": 0.8,
+          "to": 11.4
+        }
+      ]
+    },
+    {
+      "id": "demo-card",
+      "section": "demo",
+      "lines": [
+        "demo-5"
+      ],
+      "lead": 0.3,
+      "tail": 0.5,
+      "card": "zoom-card",
+      "segments": [
+        {
+          "clip": "moon-letter",
+          "from": 12.0,
+          "to": 18.55
+        }
+      ]
+    },
+    {
+      "id": "demo-light",
+      "section": "demo",
+      "lines": [
+        "demo-6"
+      ],
+      "lead": 0.3,
+      "tail": 0.6,
+      "segments": [
+        {
+          "clip": "send-a-light",
+          "from": 0.3,
+          "to": 9.0
+        }
+      ],
+      "min": 8.4
+    },
+    {
+      "id": "demo-milo",
+      "section": "demo",
+      "lines": [
+        "demo-7"
+      ],
+      "lead": 0.3,
+      "tail": 1.2,
+      "segments": [
+        {
+          "clip": "milo-eyes",
+          "from": 0.8,
+          "to": 6.4
+        },
+        {
+          "clip": "milo-eyes",
+          "from": 25.6,
+          "to": 30.4
+        }
+      ],
+      "min": 10.4
+    },
+    {
+      "id": "demo-mars",
+      "section": "demo",
+      "lines": [
+        "demo-8"
+      ],
+      "lead": 0.3,
+      "tail": 0.8,
+      "card": "stat-opp",
+      "segments": [
+        {
+          "clip": "mars-devil",
+          "from": 5.4,
+          "to": 22.6,
+          "rate": 1.15
+        }
+      ]
+    },
+    {
+      "id": "demo-ingenuity",
+      "section": "demo",
+      "lines": [
+        "demo-9"
+      ],
+      "lead": 0.3,
+      "tail": 1.2,
+      "min": 11.0,
+      "card": "stat-ing",
+      "segments": [
+        {
+          "clip": "valinor-ingenuity",
+          "from": 0.4,
+          "to": 5.6
+        },
+        {
+          "clip": "valinor-ingenuity",
+          "from": 13.7,
+          "to": 19.6
+        }
+      ]
+    },
+    {
+      "id": "demo-coop",
+      "section": "demo",
+      "lines": [
+        "demo-10"
+      ],
+      "lead": 0.3,
+      "tail": 0.8,
+      "segments": [
+        {
+          "clip": "coop",
+          "from": 0.8,
+          "to": 4.2
+        },
+        {
+          "clip": "coop",
+          "from": 9.4,
+          "to": 17.6
+        }
+      ],
+      "min": 11.6
+    },
+    {
+      "id": "demo-notebook",
+      "section": "demo",
+      "lines": [
+        "demo-11"
+      ],
+      "lead": 0.3,
+      "tail": 1.0,
+      "min": 9.4,
+      "segments": [
+        {
+          "clip": "notebook",
+          "from": 1.0,
+          "to": 10.4
+        }
+      ]
+    },
+    {
+      "id": "demo-finale",
+      "section": "demo",
+      "lines": [
+        "demo-12"
+      ],
+      "lead": 0.3,
+      "tail": 1.8,
+      "card": "light-day",
+      "segments": [
+        {
+          "clip": "finale-dish",
+          "from": 0.3,
+          "to": 4.0
+        },
+        {
+          "clip": "finale-dish",
+          "from": 10.4,
+          "to": 21.8
+        }
+      ]
+    },
+    {
+      "id": "features",
+      "section": "features",
+      "lines": [
+        "feat-1",
+        "feat-2"
+      ],
+      "lead": 0.6,
+      "tail": 0.8,
+      "card": "features",
+      "segments": [
+        {
+          "clip": "guide-settings",
+          "from": 1.0,
+          "to": 7.8
+        },
+        {
+          "clip": "guide-settings",
+          "from": 9.0,
+          "to": 18.6
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "section": "data",
+      "lines": [
+        "data-1",
+        "data-2"
+      ],
+      "lead": 0.6,
+      "tail": 1.0,
+      "card": "data",
+      "paper": true
+    },
+    {
+      "id": "impact",
+      "section": "impact",
+      "lines": [
+        "imp-1"
+      ],
+      "lead": 0.6,
+      "tail": 0.9,
+      "card": "impact",
+      "segments": [
+        {
+          "clip": "milo-complete-clean",
+          "from": 1.5,
+          "to": 15.2
+        }
+      ]
+    },
+    {
+      "id": "end",
+      "section": "impact",
+      "lines": [
+        "imp-2"
+      ],
+      "lead": 0.4,
+      "tail": 6.0,
+      "card": "end",
+      "paper": true
+    }
+  ],
+  "tabs": false
+}

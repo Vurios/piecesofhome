@@ -1,0 +1,289 @@
+import AxeBuilder from "@axe-core/playwright";
+import { type Page, expect, test } from "@playwright/test";
+
+/**
+ * The front door: loader, title, menu, notebook, settings, Field Guide and
+ * About. Runs the real intro, and checks every 2D screen with axe-core.
+ */
+// The real intro on a CPU renderer, two pages at once, needs more than the default minute.
+test.describe.configure({ timeout: 150_000 });
+
+const stage = (page: Page) => page.locator("html");
+
+async function axe(page: Page, what: string): Promise<void> {
+  // The 3D canvas has no DOM to check; everything drawn over it does.
+  const result = await new AxeBuilder({ page }).exclude("#stage").analyze();
+  const serious = result.violations.filter((v) => v.impact === "serious" || v.impact === "critical");
+  expect(serious.map((v) => `${what}: ${v.id} (${v.nodes.length}) ${v.help}`)).toEqual([]);
+}
+
+async function toMenu(page: Page): Promise<void> {
+  await page.goto("/?test&intro&quality=low");
+  await expect(stage(page)).toHaveAttribute("data-stage", "waiting", { timeout: 60_000 });
+  await expect(page.locator("#boot")).toHaveAttribute("data-prompt", "", { timeout: 10_000 });
+  await page.keyboard.press("Space");
+  // Under a full parallel run the CPU renderer and two live sound engines share the machine, so allow more than the default.
+  await expect(stage(page)).toHaveAttribute("data-stage", "title", { timeout: 15_000 });
+  // Any key skips the flight; then the chain waits for a pull.
+  await page.waitForTimeout(400);
+  await page.keyboard.press("KeyX");
+  const chain = page.getByRole("button", { name: /pull the light chain/i });
+  await expect(chain).toBeVisible({ timeout: 20_000 });
+  await chain.focus();
+  await page.keyboard.press("Enter");
+  await expect(stage(page)).toHaveAttribute("data-stage", "menu", { timeout: 10_000 });
+}
+
+test("the light, the title and the chain lead to the menu, then into play", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "keyboard path runs on desktop");
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(String(error)));
+  await toMenu(page);
+  await expect(page.getByRole("navigation", { name: /menu/i })).toBeVisible();
+  // Menu tabs answer the arrow keys.
+  const first = page.locator(".menu .tab").first();
+  await expect(first).toBeFocused();
+  await page.keyboard.press("ArrowDown");
+  await expect(page.locator(".menu .tab").nth(1)).toBeFocused();
+  await page.getByRole("button", { name: "New story" }).click();
+  // A new story opens with a short story; it can be read page by page or skipped.
+  const story = page.getByRole("dialog", { name: "The story so far" });
+  await expect(story).toBeVisible();
+  await page.keyboard.press("ArrowRight");
+  await page.getByRole("button", { name: "Skip story" }).click();
+  await expect(story).toBeHidden();
+  await expect(stage(page)).toHaveAttribute("data-stage", "ready", { timeout: 30_000 });
+  // Then one card says what the game is about and what to do. Any of the usual keys closes it.
+  const adventure = page.getByRole("dialog", { name: "Your adventure" });
+  await expect(adventure).toBeVisible();
+  await axe(page, "your adventure");
+  await page.keyboard.press("KeyE");
+  await expect(adventure).toBeHidden();
+  expect(errors).toEqual([]);
+});
+
+test("a gamepad alone gets from the loader to the notebook", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "gamepad path runs on desktop");
+  // A pretend pad in the standard mapping. Tests flip its buttons.
+  await page.addInitScript(() => {
+    const pad = { id: "test pad", index: 0, connected: true, mapping: "standard", timestamp: 0, axes: [0, 0, 0, 0], buttons: Array.from({ length: 17 }, () => ({ pressed: false, touched: false, value: 0 })) };
+    (window as unknown as { __pad: typeof pad }).__pad = pad;
+    Object.defineProperty(navigator, "getGamepads", { value: () => [pad, null, null, null] });
+  });
+  // The page itself lets go after `hold` ms, on its own timer, so a slow test runner can never stretch a
+  // short D-pad tap into a held, repeating one. Buttons are held well over a second, since the game reads
+  // them once a frame and the CPU renderer may draw only one frame a second; they fire once per press.
+  const tap = async (index: number, hold = 1500): Promise<void> => {
+    await page.evaluate(
+      ([i, ms]) => {
+        const pad = (window as unknown as { __pad: { buttons: { pressed: boolean }[] } }).__pad;
+        pad.buttons[i]!.pressed = true;
+        window.setTimeout(() => (pad.buttons[i]!.pressed = false), ms);
+      },
+      [index, hold] as const,
+    );
+    await page.waitForTimeout(hold + 450);
+  };
+  const A = 0;
+  const B = 1;
+  const DOWN = 13;
+  const UP = 12;
+  const VIEW = 8;
+  const RB = 5;
+
+  await page.goto("/?test&intro&quality=low");
+  await expect(stage(page)).toHaveAttribute("data-stage", "waiting", { timeout: 60_000 });
+  await expect(page.locator("#boot")).toHaveAttribute("data-prompt", "", { timeout: 10_000 });
+  await tap(A);
+  await expect(stage(page)).toHaveAttribute("data-stage", "title", { timeout: 15_000 });
+  // A finds the Skip button, A again presses it.
+  await tap(A);
+  await tap(A);
+  const chain = page.getByRole("button", { name: /pull the light chain/i });
+  await expect(chain).toBeFocused({ timeout: 20_000 });
+  await tap(A);
+  await expect(stage(page)).toHaveAttribute("data-stage", "menu", { timeout: 10_000 });
+  await expect(page.locator(".menu .tab").first()).toBeFocused();
+  await tap(DOWN, 380);
+  await expect(page.locator(".menu .tab").nth(1)).toBeFocused();
+  await tap(UP, 380);
+  await tap(A);
+  // B skips the short story that opens a new game.
+  await expect(page.getByRole("dialog", { name: "The story so far" })).toBeVisible();
+  await tap(B);
+  await expect(stage(page)).toHaveAttribute("data-stage", "ready", { timeout: 30_000 });
+  // A closes the "Your adventure" card.
+  await expect(page.getByRole("dialog", { name: "Your adventure" })).toBeVisible();
+  await tap(A);
+  await expect(page.getByRole("dialog", { name: "Your adventure" })).toBeHidden();
+  await tap(VIEW);
+  const book = page.locator(".notebook");
+  await expect(book).toBeVisible();
+  await tap(RB);
+  await expect(book.getByText("2 / 9")).toBeVisible();
+  await tap(B);
+  await expect(book).toBeHidden();
+});
+
+test("a tap on the loader turns on the light", async ({ page }) => {
+  await page.goto("/?test&intro&quality=low");
+  await expect(stage(page)).toHaveAttribute("data-stage", "waiting", { timeout: 60_000 });
+  await expect(page.locator("#boot")).toHaveAttribute("data-prompt", "", { timeout: 10_000 });
+  await page.locator("#boot").click({ position: { x: 40, y: 40 } });
+  await expect(stage(page)).toHaveAttribute("data-stage", "title");
+});
+
+test("menu, settings and credits pass axe", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "one size is enough");
+  await toMenu(page);
+  await page.waitForTimeout(900);
+  await axe(page, "menu");
+  await page.getByRole("button", { name: "Settings" }).click();
+  await expect(page.getByRole("dialog", { name: "Settings" })).toBeVisible();
+  await axe(page, "settings");
+  await page.keyboard.press("Escape");
+  await page.getByRole("button", { name: "Credits" }).click();
+  await expect(page.getByRole("dialog", { name: "Credits" })).toBeVisible();
+  await axe(page, "credits");
+  // About is a tab inside Credits, not a separate page.
+  await page.getByRole("tab", { name: "About this game" }).click();
+  await expect(page.getByRole("heading", { name: "For grown-ups" })).toBeVisible();
+  await axe(page, "about");
+  await page.keyboard.press("Escape");
+  // The Field Guide opens inside the game too.
+  await page.getByRole("button", { name: "Field Guide" }).click();
+  const guide = page.getByRole("dialog", { name: "Field Guide" });
+  await expect(guide).toBeVisible();
+  await guide.getByRole("button", { name: /The little mirrors/ }).click();
+  await expect(guide.getByRole("heading", { name: "The little mirrors" })).toBeVisible();
+  await page.keyboard.press("ArrowDown");
+  await expect(guide.getByRole("heading", { name: "The Moon buggy" })).toBeVisible();
+  await axe(page, "field guide panel");
+  await page.keyboard.press("Escape");
+  // Play together: the code is set with paper tiles and a word board, never a browser dropdown.
+  await page.getByRole("button", { name: "Play together" }).click();
+  const together = page.getByRole("dialog", { name: "Play together" });
+  await expect(together.locator("select")).toHaveCount(0);
+  await together.getByRole("button", { name: "Word 2: otter" }).click();
+  await together.getByRole("button", { name: "koala", exact: true }).click();
+  await expect(together.getByRole("button", { name: "Word 2: koala" })).toBeFocused();
+  await page.keyboard.press("ArrowDown");
+  await expect(together.getByRole("button", { name: "Word 2: lamp" })).toHaveCount(0);
+  await axe(page, "play together");
+});
+
+test("the notebook opens, turns with the keys and passes axe", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "keyboard path runs on desktop");
+  await page.goto("/?test&quality=low");
+  await expect(stage(page)).toHaveAttribute("data-stage", "ready", { timeout: 60_000 });
+  await page.keyboard.press("KeyN");
+  const book = page.locator(".notebook");
+  await expect(book).toBeVisible();
+  await expect(book.getByText("1 / 9")).toBeVisible();
+  await page.keyboard.press("ArrowRight");
+  await expect(book.getByText("2 / 9")).toBeVisible();
+  await page.waitForTimeout(700);
+  await axe(page, "notebook");
+  await page.keyboard.press("Escape");
+  await expect(book).toBeHidden();
+});
+
+test("chapter select lists every world and goes to an open one", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "one size is enough");
+  test.setTimeout(180_000);
+  await page.addInitScript(() => {
+    if (sessionStorage.getItem("seeded")) return;
+    const save = { version: 1, world: "home", miloStage: 3, carrying: null, delivered: ["to-the-lamp"], stamps: ["prologue", "chapter-1", "chapter-2", "chapter-3"], flags: ["seen-notebook"] };
+    localStorage.setItem("poh.save.v1", JSON.stringify(save));
+    sessionStorage.setItem("seeded", "1");
+  });
+  await toMenu(page);
+  await page.getByRole("button", { name: /chapters/i }).click();
+  const list = page.locator(".chapters li");
+  await expect(list).toHaveCount(7);
+  await expect(list.filter({ hasText: "Stamped" })).toHaveCount(4);
+  await expect(list.filter({ hasText: "Bonus: Ocean of Storms" }).getByRole("button", { name: "Go" })).toBeVisible();
+  await expect(list.filter({ hasText: "Finale" })).toContainText("Not yet");
+  await axe(page, "chapter select");
+  await list.filter({ hasText: "Chapter 2" }).getByRole("button", { name: "Go" }).click();
+  await page.waitForFunction(() => (window as unknown as { __poh: { worldId(): string | null } }).__poh.worldId() === "hadley", null, { timeout: 90_000 });
+});
+
+test("the Field Guide works without 3D and passes axe", async ({ page }) => {
+  await page.goto("/field-guide/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Pieces of Home: Field Guide");
+  await expect(page.locator("canvas")).toHaveCount(0);
+  await expect(page.locator("article.machine:not(.archive-card)")).toHaveCount(7);
+  // Dad's archive: six cards, each with a credited photo.
+  await expect(page.locator("article.archive-card")).toHaveCount(6);
+  await expect(page.getByText("Dad's sketch. Not to scale.").first()).toBeVisible();
+  // Every photo has its credit line.
+  const photos = page.locator("figure.photo");
+  const count = await photos.count();
+  expect(count).toBeGreaterThan(0);
+  for (let i = 0; i < count; i += 1) await expect(photos.nth(i).locator("figcaption")).toContainText("Photo:");
+  await axe(page, "field guide");
+});
+
+test("the About page has the note for grown-ups and passes axe", async ({ page }) => {
+  await page.goto("/about/");
+  await expect(page.getByRole("heading", { name: "For grown-ups" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Read the Field Guide" })).toHaveAttribute("href", "/field-guide/");
+  await axe(page, "about");
+});
+
+test("Dad's map opens from the corner, zooms, spins to a place and passes axe", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "the corner map moves to the top on touch; one size is enough");
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  await page.goto("/?test&quality=low&world=tranquility");
+  await expect(stage(page)).toHaveAttribute("data-stage", "ready", { timeout: 60_000 });
+  const corner = page.getByRole("button", { name: "Open Dad's map" });
+  await expect(corner).toBeVisible({ timeout: 20_000 });
+  await corner.click();
+  const panel = page.getByRole("dialog", { name: "Tranquility Base" });
+  await expect(panel).toBeVisible();
+  await expect(panel.getByText(/of \d+ found/)).toBeVisible();
+  await panel.getByRole("button", { name: "Zoom in" }).click();
+  await panel.getByRole("button", { name: /Little mirrors/ }).click();
+  await page.waitForTimeout(600);
+  await axe(page, "map");
+  await page.keyboard.press("KeyM");
+  await expect(panel).toBeHidden();
+  expect(errors).toEqual([]);
+});
+
+test("Dad's archive opens from the workshop board, flips through its cards and passes axe", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "one size is enough for the archive panel");
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  // A story just past the prologue: the board in the workshop is open.
+  await page.addInitScript(() => {
+    if (sessionStorage.getItem("seeded")) return;
+    localStorage.setItem("poh.save.v1", JSON.stringify({ version: 1, world: "home", miloStage: 0, carrying: null, delivered: ["to-the-lamp"], stamps: ["prologue"], flags: ["seen-notebook", "workshop-key", "lamp-on"] }));
+    sessionStorage.setItem("seeded", "1");
+  });
+  await page.goto("/?test&quality=low");
+  await expect(stage(page)).toHaveAttribute("data-stage", "ready", { timeout: 60_000 });
+  expect(await page.evaluate("window.__poh.teleportTo('archive')")).toBe(true);
+  const panel = page.getByRole("dialog", { name: "Dad's archive" });
+  for (let i = 0; i < 6 && !(await panel.isVisible()); i += 1) {
+    await page.keyboard.down("KeyE");
+    await page.waitForTimeout(150);
+    await page.keyboard.up("KeyE");
+    await page.waitForTimeout(700);
+  }
+  await expect(panel).toBeVisible();
+  await expect(panel.getByRole("heading", { name: "Surveyor 3" })).toBeVisible();
+  await page.keyboard.press("ArrowDown");
+  await expect(panel.getByRole("heading", { name: "Sojourner" })).toBeVisible();
+  await panel.getByRole("button", { name: /InSight/ }).click();
+  await expect(panel.getByRole("heading", { name: "InSight" })).toBeVisible();
+  // Every card shows a credited photo and links to its sources.
+  await expect(panel.getByText("Photo: NASA/JPL-Caltech")).toBeVisible();
+  expect(await panel.locator(".sources a").count()).toBeGreaterThan(0);
+  await axe(page, "archive");
+  await page.keyboard.press("Escape");
+  await expect(panel).toBeHidden();
+  expect(errors).toEqual([]);
+});

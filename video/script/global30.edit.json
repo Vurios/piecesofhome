@@ -1,0 +1,133 @@
+{
+  "note": "Edit list for the 30-second NASA demo. Beats have exact lengths so each part of NASA's outline lands in its window (0 to 2, 2 to 5, 5 to 10, 10 to 20, 20 to 30). Clean captures (HUD hidden) so every frame reads at a glance, one card at a time, quick crossfades, no section tabs. AI use is disclosed in the description, the MP4 metadata and the submission forms.",
+  "gap": 0.2,
+  "xf": 0.22,
+  "tabs": false,
+  "beats": [
+    {
+      "id": "g-hi",
+      "section": "intro",
+      "lines": [
+        "g-1"
+      ],
+      "lead": 0.2,
+      "dur": 2.0,
+      "card": "g-hi",
+      "segments": [
+        {
+          "clip": "title-still",
+          "from": 1.7,
+          "to": 3.9
+        }
+      ]
+    },
+    {
+      "id": "g-lead",
+      "section": "problem",
+      "lines": [
+        "g-2"
+      ],
+      "lead": 0.05,
+      "dur": 3.25,
+      "card": "g-lead",
+      "paper": true
+    },
+    {
+      "id": "g-name",
+      "section": "solution",
+      "lines": [
+        "g-3"
+      ],
+      "lead": 0.25,
+      "dur": 4.75,
+      "card": "g-name",
+      "segments": [
+        {
+          "clip": "title-still",
+          "from": 9.6,
+          "to": 14.6
+        }
+      ]
+    },
+    {
+      "id": "g-idea",
+      "section": "demo",
+      "lines": [
+        "g-4"
+      ],
+      "lead": 0.15,
+      "dur": 10.0,
+      "card": "g-idea",
+      "segments": [
+        {
+          "clip": "bench-trip-clean",
+          "from": 3.4,
+          "to": 4.9
+        },
+        {
+          "clip": "moon-letter-clean",
+          "from": 4.4,
+          "to": 6.2
+        },
+        {
+          "clip": "mars-devil-clean",
+          "from": 9.7,
+          "to": 11.2
+        },
+        {
+          "clip": "send-a-light-clean",
+          "from": 2.9,
+          "to": 4.8
+        },
+        {
+          "clip": "milo-eyes-clean",
+          "from": 0.7,
+          "to": 2.1
+        },
+        {
+          "clip": "moon-letter-clean",
+          "from": 14.6,
+          "to": 16.6
+        }
+      ]
+    },
+    {
+      "id": "g-future",
+      "section": "impact",
+      "lines": [
+        "g-5"
+      ],
+      "lead": 0.2,
+      "dur": 5.6,
+      "card": "g-future",
+      "segments": [
+        {
+          "clip": "coop-clean",
+          "from": 9.2,
+          "to": 11.2
+        },
+        {
+          "clip": "milo-complete-clean",
+          "from": 4.0,
+          "to": 6.0
+        },
+        {
+          "clip": "finale-dish-clean",
+          "from": 15.6,
+          "to": 17.8
+        }
+      ]
+    },
+    {
+      "id": "g-end",
+      "section": "impact",
+      "lines": [
+        "g-6"
+      ],
+      "lead": 0.3,
+      "dur": 4.3,
+      "card": "g-end",
+      "paper": true
+    }
+  ]
+}

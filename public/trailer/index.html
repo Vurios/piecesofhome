@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pieces of Home: 30-second video</title>
+<meta name="description" content="Pieces of Home, a cozy browser game about the machines left on the Moon and Mars. Left behind. Still shining.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  @font-face { font-family: "Zilla Slab"; src: url("/fonts/zilla-slab-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+  @font-face { font-family: "Kalam"; src: url("/fonts/kalam-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+  @font-face { font-family: "Atkinson"; src: url("/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+  :root { --ink: #2b2420; --paper: #f7f1e6; --clay: #b5523b; --amber: #e8a043; --night: #1d1726; --soft: #6b5f57; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: radial-gradient(1200px 700px at 50% 0%, #3a2a3e 0%, var(--night) 70%); color: var(--ink); font: 18px/1.5 "Atkinson", system-ui, sans-serif; display: grid; place-items: center; padding: 32px 16px; }
+  main { width: min(1120px, 100%, max(360px, calc((100vh - 380px) * 1.7778 + 56px))); background: var(--paper); border-radius: 18px; padding: 28px 28px 22px; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+  h1 { font: 700 44px/1.05 "Zilla Slab", Georgia, serif; margin: 0; }
+  .tag { font: 700 24px/1.2 "Kalam", cursive; color: var(--clay); margin: 4px 0 18px; }
+  video { width: 100%; aspect-ratio: 16 / 9; display: block; border-radius: 10px; background: #000; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: center; margin-top: 18px; }
+  .play { background: var(--amber); color: var(--ink); font-weight: 800; text-decoration: none; padding: 12px 22px; border-radius: 999px; box-shadow: 0 4px 0 #b9762a; }
+  .play:hover { filter: brightness(1.05); }
+  a { color: var(--clay); }
+  .fine { color: var(--soft); font-size: 14px; margin: 16px 0 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Pieces of Home</h1>
+  <p class="tag">Left behind. Still shining.</p>
+  <video controls playsinline preload="metadata" poster="poster.jpg">
+    <source src="pieces-of-home-30s.mp4" type="video/mp4">
+    <track kind="captions" src="captions.vtt" srclang="en" label="English">
+  </video>
+  <div class="row">
+    <a class="play" href="/">Play free in your browser</a>
+    <span>Best on a laptop or desktop computer.</span>
+    <a href="https://github.com/Vurios/piecesofhome">Code and credits</a>
+    <a href="https://github.com/Vurios/piecesofhome/releases/latest/download/HackstreetBoys_PiecesOfHome_30s.mp4">Video not playing? Get the MP4</a>
+  </div>
+  <p class="fine">Team Hackstreet Boys, NASA Space Apps Challenge 2026. Challenge: Abandoned but not Forgotten: Storytelling about NASA's Discarded Equipment on the Moon and Mars. Made with AI tools: an AI coding assistant helped build the game and this video, and the narration is a synthetic voice (see AI_USE.md in the code). NASA images carry their credits. NASA did not make, sponsor or endorse this project.</p>
+</main>
+</body>
+</html>

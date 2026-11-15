@@ -1,0 +1,723 @@
+import { readFileSync } from "node:fs";
+import { type Page, expect, test } from "@playwright/test";
+
+/**
+ * Chapter playthroughs (Phase 05). Each test plays a chapter's critical path
+ * from the dome on Dad's workbench to the stamp, using the debug hooks to
+ * walk (teleport) but pressing the real interact key for every step, and
+ * clicking "Got it" on every story card.
+ */
+interface State {
+  world: string;
+  carrying: string | null;
+  delivered: string[];
+  stamps: string[];
+  flags: string[];
+  miloStage: number;
+}
+
+interface Poh {
+  state(): State;
+  teleportTo(id: string): boolean;
+  worldId(): string | null;
+}
+
+// The playthroughs are long and draw on the CPU: run them one after another, never side by side.
+test.describe.configure({ mode: "default" });
+
+const AFTER_PROLOGUE = { version: 1, world: "home", miloStage: 0, carrying: null, delivered: ["to-the-lamp"], stamps: ["prologue"], flags: ["seen-notebook"] };
+
+async function start(page: Page): Promise<void> {
+  await page.addInitScript((save) => {
+    if (!sessionStorage.getItem("seeded")) {
+      localStorage.setItem("poh.save.v1", JSON.stringify(save));
+      sessionStorage.setItem("seeded", "1");
+    }
+  }, AFTER_PROLOGUE);
+  await page.goto("/?test&quality=low");
+  await expect(page.locator("html")).toHaveAttribute("data-stage", "ready", { timeout: 60_000 });
+}
+
+const state = (page: Page): Promise<State> => page.evaluate(() => (window as unknown as { __poh: Poh }).__poh.state());
+
+async function goTo(page: Page, id: string): Promise<void> {
+  const ok = await page.evaluate((target) => (window as unknown as { __poh: Poh }).__poh.teleportTo(target), id);
+  expect(ok, `teleport to ${id}`).toBe(true);
+  await page.waitForTimeout(400);
+}
+
+async function use(page: Page): Promise<void> {
+  // While a story card is up, the interact key belongs to the card.
+  while (await page.locator(".card .got").count()) {
+    await page.waitForTimeout(500);
+    await page.locator(".card .got").click();
+    await page.waitForTimeout(300);
+  }
+  await page.keyboard.down("KeyE");
+  await page.waitForTimeout(120);
+  await page.keyboard.up("KeyE");
+  await page.waitForTimeout(300);
+}
+
+/**
+ * Plays one move of a story game, if one is up (Chapter 3): grind the rock and
+ * find the blueberries, read the rover's last report, send the calls.
+ */
+/** Every kind of story game the helpers have played, for the checks at the end. */
+const played = new Set<string>();
+
+async function playGame(page: Page): Promise<void> {
+  const game = page.locator(".game");
+  if (!(await game.count())) return;
+  // A game can finish and leave between any two looks, so every look is short and forgiving.
+  const quick = { timeout: 2_000 };
+  const kind = (await game.getAttribute("class", quick).catch(() => null)) ?? "";
+  for (const name of ["telemetry", "blueberries", "calls"]) if (kind.includes(name)) played.add(name);
+  await page.waitForTimeout(500);
+  if (kind.includes("telemetry")) await page.locator(".game .got").click(quick).catch(() => undefined);
+  else if (kind.includes("blueberries")) {
+    const berry = page.locator(".game .berry:not(.found)");
+    if (await berry.count()) await berry.first().click(quick).catch(() => undefined);
+    else if (!(await page.locator(".game .berry").count())) {
+      // Grinding fills while the key is held.
+      await page.keyboard.down("KeyE");
+      await page.waitForTimeout(2600);
+      await page.keyboard.up("KeyE");
+    }
+  } else if (kind.includes("calls")) {
+    const send = page.locator(".game .btn");
+    if (await send.isEnabled(quick).catch(() => false)) await send.click(quick).catch(() => undefined);
+  }
+}
+
+/**
+ * Walks to `id` and presses the interact key until `done` is true. A story
+ * card that pops up late can take a key press, so it tries again.
+ */
+async function useUntil(page: Page, id: string, done: (s: State) => boolean, timeout = 60_000): Promise<void> {
+  const end = Date.now() + timeout;
+  while (Date.now() < end) {
+    await playUntil(page, () => true);
+    await goTo(page, id);
+    await use(page);
+    await page.waitForTimeout(600);
+    if (done(await state(page))) return;
+  }
+  throw new Error(`could not use ${id}; state ${JSON.stringify(await state(page))}`);
+}
+
+/**
+ * Saves a screenshot of a key beat into docs/screens/phase05/ when SHOTS=1
+ * (desktop only), so a run can refresh the review set.
+ */
+async function beat(page: Page, name: string): Promise<void> {
+  if (!process.env["SHOTS"] || page.viewportSize()?.width !== 1440) return;
+  await page.waitForTimeout(700);
+  await page.screenshot({ path: `docs/screens/phase05/${name}-1440x900.png` });
+}
+
+/** Clicks through story cards and story games until `done` is true. */
+async function playUntil(page: Page, done: (s: State) => boolean, timeout = 40_000): Promise<void> {
+  const end = Date.now() + timeout;
+  while (Date.now() < end) {
+    if (done(await state(page))) return;
+    const got = page.locator(".card .got");
+    if (await got.count()) {
+      await page.waitForTimeout(500);
+      await got.click();
+    }
+    await playGame(page);
+    await page.waitForTimeout(250);
+  }
+  throw new Error(`timed out; state ${JSON.stringify(await state(page))}`);
+}
+
+test("Chapter 1: from the dome to the stamp", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "one full playthrough on desktop is enough");
+  test.setTimeout(480_000);
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+  await start(page);
+
+  // Into the Moon dome: the camera dives in, then the rocket trip.
+  await goTo(page, "dome-tranquility");
+  await use(page);
+  await page.getByRole("button", { name: /Let's go/ }).click();
+  await page.waitForFunction(() => (window as unknown as { __poh: Poh }).__poh.worldId() === "tranquility", null, { timeout: 30_000 });
+  await playUntil(page, (s) => s.carrying === "a11-letter-descent");
+
+  // Three letters, each with its story beat.
+  for (const [target, letter, next] of [
+    ["descent", "a11-letter-descent", "a11-letter-seismometer"],
+    ["seismometer", "a11-letter-seismometer", "a11-letter-mirrors"],
+  ] as const) {
+    await useUntil(page, `letter-${target}`, (s) => s.delivered.includes(letter));
+    await playUntil(page, (s) => s.carrying === next);
+  }
+  await useUntil(page, "letter-lrrr", (s) => s.delivered.includes("a11-letter-mirrors"));
+  await playUntil(page, (s) => s.flags.includes("send-a-light:started"));
+
+  // Send a Light: two more mirrors, a turn of the frame, then one blink from Earth.
+  for (const panel of ["a", "b"]) {
+    await goTo(page, `mirror-${panel}`);
+    await use(page);
+    expect((await state(page)).carrying).toBe(`mirror:${panel}`);
+    await goTo(page, "frame-fit");
+    await use(page);
+  }
+  await playUntil(page, (s) => s.flags.includes("send-a-light:mirrors"));
+  await goTo(page, "frame-turn");
+  await use(page);
+  await playUntil(page, (s) => s.flags.includes("send-a-light:turn"));
+  await goTo(page, "earth-console");
+  await use(page);
+  await playUntil(page, (s) => s.flags.includes("send-a-light:done"));
+
+  // Milo's parcel, home through the lamp light, and his new eyes.
+  await page.waitForTimeout(1500);
+  await useUntil(page, "parcel", (s) => s.carrying === "part:chapter-1");
+  await goTo(page, "lamp-home");
+  await use(page);
+  await page.waitForFunction(() => (window as unknown as { __poh: Poh }).__poh.worldId() === "home", null, { timeout: 30_000 });
+  await page.waitForTimeout(800);
+  await goTo(page, "milo");
+  await use(page);
+  await playUntil(page, (s) => s.stamps.includes("chapter-1"), 60_000);
+  const end = await state(page);
+  expect(end.miloStage).toBe(1);
+  expect(end.carrying).toBeNull();
+  expect(errors).toEqual([]);
+});
+
+const AFTER_CHAPTER_1 = { version: 1, world: "home", miloStage: 1, carrying: null, delivered: ["to-the-lamp", "a11-letter-descent", "a11-letter-seismometer", "a11-letter-mirrors"], stamps: ["prologue", "chapter-1"], flags: ["seen-notebook"] };
+
+test("Chapter 3: from the dome to the stamp", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "one full playthrough on desktop is enough");
+  test.setTimeout(480_000);
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+  await page.addInitScript((save) => {
+    if (!sessionStorage.getItem("seeded")) {
+      localStorage.setItem("poh.save.v1", JSON.stringify(save));
+      sessionStorage.setItem("seeded", "1");
+    }
+  }, AFTER_CHAPTER_1);
+  await page.goto("/?test&quality=low");
+  await expect(page.locator("html")).toHaveAttribute("data-stage", "ready", { timeout: 60_000 });
+
+  // Into the Mars dome.
+  await goTo(page, "dome-meridiani");
+  await use(page);
+  await page.getByRole("button", { name: /Let's go/ }).click();
+  await page.waitForFunction(() => (window as unknown as { __poh: Poh }).__poh.worldId() === "meridiani", null, { timeout: 30_000 });
+  await playUntil(page, (s) => s.carrying === "opp-letter-bounce", 90_000);
+
+  // Three letters: the bounce marks, the rock grinder (with the blueberry game), the panels.
+  await goTo(page, "letter-bounce");
+  await use(page);
+  await playUntil(page, (s) => s.carrying === "opp-letter-grinder", 90_000);
+  await goTo(page, "letter-grinder");
+  await use(page);
+  await playUntil(page, (s) => s.carrying === "opp-letter-panels", 150_000);
+  await goTo(page, "letter-panels");
+  await use(page);
+  await playUntil(page, (s) => s.flags.includes("wait-for-the-wind:started"), 90_000);
+
+  // Wait for the Wind: take a breeze flag and plant it with the real keys...
+  await playUntil(page, () => true);
+  await goTo(page, "flag-take");
+  await use(page);
+  expect((await state(page)).carrying).toBe("flag:0");
+  await goTo(page, "letter-panels");
+  await use(page);
+  await playUntil(page, (s) => s.flags.includes("wait-for-the-wind:flags"));
+  expect((await state(page)).carrying).toBeNull();
+  // ...then line all three up from the dust devils' lane to the rover, and send a devil along it.
+  await page.evaluate(() => {
+    const poh = (window as unknown as { __poh: { world(c: string): unknown } }).__poh;
+    poh.world("guide");
+    poh.world("devil");
+  });
+  await playUntil(page, (s) => s.flags.includes("wait-for-the-wind:clean"), 120_000);
+  // The rover wakes, then the long storm: the last report and the calls nobody answers.
+  await playUntil(page, (s) => s.flags.includes("wait-for-the-wind:done"), 90_000);
+  const end = Date.now() + 150_000;
+  while (Date.now() < end) {
+    if (played.has("calls") && !(await page.locator(".game").count())) break;
+    if (await page.locator(".card .got").count()) {
+      await page.waitForTimeout(500);
+      await page.locator(".card .got").click();
+    }
+    await playGame(page);
+    await page.waitForTimeout(250);
+  }
+  expect([...played].sort()).toEqual(["blueberries", "calls", "telemetry"]);
+  await playUntil(page, () => false, 12_000).catch(() => undefined);
+
+  // The solar heart for Milo, home through the lamp light.
+  await useUntil(page, "parcel", (s) => s.carrying === "part:chapter-3");
+  await goTo(page, "lamp-home");
+  await use(page);
+  await page.waitForFunction(() => (window as unknown as { __poh: Poh }).__poh.worldId() === "home", null, { timeout: 30_000 });
+  await page.waitForTimeout(800);
+  await goTo(page, "milo");
+  await use(page);
+  await playUntil(page, (s) => s.stamps.includes("chapter-3"), 60_000);
+  const after = await state(page);
+  expect(after.miloStage).toBe(3);
+  expect(errors).toEqual([]);
+});
+
+test("Chapter 2: from the dome to the stamp", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "one full playthrough on desktop is enough");
+  test.setTimeout(480_000);
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+  await page.addInitScript((save) => {
+    if (!sessionStorage.getItem("seeded")) {
+      localStorage.setItem("poh.save.v1", JSON.stringify(save));
+      sessionStorage.setItem("seeded", "1");
+    }
+  }, AFTER_CHAPTER_1);
+  await page.goto("/?test&quality=low");
+  await expect(page.locator("html")).toHaveAttribute("data-stage", "ready", { timeout: 60_000 });
+  const ride = (): Promise<{ riding: boolean; speed: number; steps: string[] }> =>
+    page.evaluate(() => (window as unknown as { __poh: { world(c: string): unknown } }).__poh.world("state")) as never;
+  const world = (command: string): Promise<unknown> => page.evaluate((c) => (window as unknown as { __poh: { world(c: string): unknown } }).__poh.world(c), command);
+
+  // Into the Hadley dome (the middle of Dad's workbench, between two others).
+  await goTo(page, "dome-hadley");
+  await use(page);
+  await page.getByRole("button", { name: /Let's go/ }).click();
+  await page.waitForFunction(() => (window as unknown as { __poh: Poh }).__poh.worldId() === "hadley", null, { timeout: 30_000 });
+  await playUntil(page, (s) => s.carrying === "a15-letter-wheels", 90_000);
+  await beat(page, "ch2-01-arrive");
+
+  // Three letters: the woven wheels, the two seats, the tracks.
+  for (const [target, letter, next] of [
+    ["wheels", "a15-letter-wheels", "a15-letter-seats"],
+    ["seats", "a15-letter-seats", "a15-letter-tracks"],
+  ] as const) {
+    await useUntil(page, `letter-${target}`, (s) => s.delivered.includes(letter));
+    await playUntil(page, (s) => s.carrying === next, 90_000);
+  }
+  await useUntil(page, "letter-tracks", (s) => s.delivered.includes("a15-letter-tracks"));
+  await playUntil(page, (s) => s.flags.includes("steer-from-the-back:started"), 90_000);
+
+  // Dad's wheel test: push all three wheels, then the chevrons win.
+  await playUntil(page, () => true);
+  const end = Date.now() + 60_000;
+  while (!(await page.locator(".game.wheels").count()) && Date.now() < end) {
+    await goTo(page, "wheel-test");
+    await use(page);
+    await page.waitForTimeout(800);
+  }
+  await expect(page.locator(".game.wheels")).toBeVisible();
+  for (const key of ["Digit1", "Digit2", "Digit3"]) {
+    await page.keyboard.press(key);
+    await page.keyboard.press("KeyE");
+    await page.waitForTimeout(3600);
+  }
+  await beat(page, "ch2-02-wheel-test");
+  await page.locator(".game.wheels .got").click();
+  await playUntil(page, (s) => s.flags.includes("steer-from-the-back:wheels"));
+
+  // The drive: into the driver's seat, roll forward on the real keys, then out to the rille and back.
+  for (let i = 0; i < 8 && !(await ride()).riding; i += 1) {
+    await playUntil(page, () => true);
+    await goTo(page, "buggy-seat");
+    await use(page);
+    await page.waitForTimeout(600);
+  }
+  expect((await ride()).riding).toBe(true);
+  await expect(page.locator(".drive")).toBeVisible();
+  await page.keyboard.down("KeyW");
+  await page.waitForTimeout(1200);
+  expect((await ride()).speed).toBeGreaterThan(0);
+  await beat(page, "ch2-03-drive");
+  await page.keyboard.up("KeyW");
+  await world("to-overlook");
+  await page.waitForTimeout(400);
+  await playUntil(page, (s) => s.flags.includes("steer-from-the-back:drive"), 30_000);
+  await world("to-park");
+  await page.keyboard.down("KeyW");
+  await page.waitForTimeout(1200);
+  await page.keyboard.up("KeyW");
+  await playUntil(page, (s) => s.flags.includes("steer-from-the-back:done"), 60_000);
+  expect((await ride()).riding).toBe(false);
+
+  // Milo's mesh wheels, home through the lamp light.
+  await playUntil(page, () => false, 8_000).catch(() => undefined);
+  await useUntil(page, "parcel", (s) => s.carrying === "part:chapter-2");
+  await goTo(page, "lamp-home");
+  await use(page);
+  await page.waitForFunction(() => (window as unknown as { __poh: Poh }).__poh.worldId() === "home", null, { timeout: 30_000 });
+  await page.waitForTimeout(800);
+  await useUntil(page, "milo", (s) => s.flags.includes("chapter-2:fitted"));
+  await playUntil(page, (s) => s.stamps.includes("chapter-2"), 60_000);
+  await beat(page, "ch2-04-stamp");
+  const after = await state(page);
+  expect(after.miloStage).toBe(2);
+  expect(errors).toEqual([]);
+});
+
+test("Chapter 4: from the dome to the stamp", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "one full playthrough on desktop is enough");
+  test.setTimeout(480_000);
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+  await page.addInitScript((save) => {
+    if (!sessionStorage.getItem("seeded")) {
+      localStorage.setItem("poh.save.v1", JSON.stringify(save));
+      sessionStorage.setItem("seeded", "1");
+    }
+  }, AFTER_CHAPTER_1);
+  await page.goto("/?test&quality=low");
+  await expect(page.locator("html")).toHaveAttribute("data-stage", "ready", { timeout: 60_000 });
+
+  // Into the Valinor Hills dome, at the end of Dad's workbench.
+  await goTo(page, "dome-valinor");
+  await use(page);
+  await page.getByRole("button", { name: /Let's go/ }).click();
+  await page.waitForFunction(() => (window as unknown as { __poh: Poh }).__poh.worldId() === "valinor", null, { timeout: 30_000 });
+  await playUntil(page, (s) => s.carrying === "ing-letter-field", 90_000);
+  await beat(page, "ch4-01-arrive");
+
+  // Three letters: Wright Brothers Field, the rover's tracks, Ingenuity.
+  for (const [target, letter, next] of [
+    ["airfield", "ing-letter-field", "ing-letter-tracks"],
+    ["tracks", "ing-letter-tracks", "ing-letter-heli"],
+  ] as const) {
+    await useUntil(page, `letter-${target}`, (s) => s.delivered.includes(letter));
+    await playUntil(page, (s) => s.carrying === next, 90_000);
+  }
+  await useUntil(page, "letter-ingenuity", (s) => s.delivered.includes("ing-letter-heli"));
+  await playUntil(page, (s) => s.flags.includes("thin-air:started"), 90_000);
+
+  // Dad's rotor bench: Earth air, then Mars air, then big fast blades until it hops.
+  const open = async (id: string, selector: string): Promise<void> => {
+    const end = Date.now() + 60_000;
+    while (!(await page.locator(selector).count()) && Date.now() < end) {
+      await playUntil(page, () => true);
+      await goTo(page, id);
+      await use(page);
+      await page.waitForTimeout(1200);
+    }
+    await expect(page.locator(selector)).toBeVisible();
+    await page.waitForTimeout(500);
+  };
+  await open("rotor-bench", ".game.air");
+  await page.keyboard.press("KeyE");
+  await page.waitForTimeout(3000);
+  await page.keyboard.press("Digit2");
+  await page.keyboard.press("KeyE");
+  await page.waitForTimeout(3000);
+  for (let i = 0; i < 3; i += 1) {
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowUp");
+  }
+  await page.keyboard.press("KeyE");
+  await page.waitForTimeout(3000);
+  await beat(page, "ch4-02-rotor-bench");
+  await page.locator(".game.air .got").click();
+  await playUntil(page, (s) => s.flags.includes("thin-air:bench"));
+
+  // The scout flight: a safe way round the rocks and the soft sand, then send it.
+  await open("scout-pad", ".game.scout");
+  for (const [key, times] of [["ArrowRight", 3], ["ArrowUp", 2], ["ArrowRight", 2], ["ArrowDown", 4], ["ArrowRight", 3], ["ArrowUp", 2]] as const) {
+    for (let i = 0; i < times; i += 1) await page.keyboard.press(key);
+  }
+  await page.keyboard.press("KeyE");
+  await expect(page.locator(".game.scout .got")).toBeVisible({ timeout: 20_000 });
+  await beat(page, "ch4-03-scout");
+  await page.locator(".game.scout .got").click();
+  await playUntil(page, (s) => s.flags.includes("thin-air:scout"));
+
+  // A note in Ingenuity's log, made of word chips.
+  await open("ingenuity-log", ".game.note");
+  for (let row = 0; row < 3; row += 1) await page.locator(".game.note .chips").nth(row).locator("button").first().click();
+  await beat(page, "ch4-04-log-note");
+  await page.locator(".game.note .got").click();
+  await playUntil(page, (s) => s.flags.includes("thin-air:done"), 60_000);
+
+  // Milo's rotor, home through the lamp light.
+  await playUntil(page, () => false, 8_000).catch(() => undefined);
+  await useUntil(page, "parcel", (s) => s.carrying === "part:chapter-4");
+  await goTo(page, "lamp-home");
+  await use(page);
+  await page.waitForFunction(() => (window as unknown as { __poh: Poh }).__poh.worldId() === "home", null, { timeout: 30_000 });
+  await page.waitForTimeout(800);
+  await useUntil(page, "milo", (s) => s.flags.includes("chapter-4:fitted"));
+  await playUntil(page, (s) => s.stamps.includes("chapter-4"), 60_000);
+  await beat(page, "ch4-05-stamp");
+  expect(await page.evaluate(() => localStorage.getItem("poh.lognote.v1"))).toContain("Hello, explorer!");
+  expect(errors).toEqual([]);
+});
+
+const BONUS_OPEN = {
+  version: 1,
+  world: "home",
+  miloStage: 3,
+  carrying: null,
+  delivered: ["to-the-lamp"],
+  stamps: ["prologue", "chapter-1", "chapter-2", "chapter-3"],
+  flags: ["seen-notebook", "bonus:seen"],
+};
+
+test("Bonus: the Ocean of Storms, from the dome to the stamp", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "one full playthrough on desktop is enough");
+  test.setTimeout(480_000);
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+  await page.addInitScript((save) => {
+    if (!sessionStorage.getItem("seeded")) {
+      localStorage.setItem("poh.save.v1", JSON.stringify(save));
+      sessionStorage.setItem("seeded", "1");
+    }
+  }, BONUS_OPEN);
+  await page.goto("/?test&quality=low");
+  await expect(page.locator("html")).toHaveAttribute("data-stage", "ready", { timeout: 60_000 });
+
+  // Dad's newest dome, on its own stand by the archive board.
+  await goTo(page, "dome-storms");
+  await use(page);
+  await page.getByRole("button", { name: /Let's go/ }).click();
+  await page.waitForFunction(() => (window as unknown as { __poh: Poh }).__poh.worldId() === "storms", null, { timeout: 30_000 });
+  await playUntil(page, (s) => s.carrying === "sur3-letter-trenches", 90_000);
+  await beat(page, "bonus-01-arrive");
+
+  // Three letters: the trenches, Intrepid, Surveyor 3.
+  for (const [target, letter, next] of [
+    ["trenches", "sur3-letter-trenches", "a12-letter-intrepid"],
+    ["intrepid", "a12-letter-intrepid", "sur3-letter-surveyor"],
+  ] as const) {
+    await useUntil(page, `letter-${target}`, (s) => s.delivered.includes(letter));
+    await playUntil(page, (s) => s.carrying === next, 90_000);
+  }
+  await useUntil(page, "letter-surveyor", (s) => s.delivered.includes("sur3-letter-surveyor"));
+  await playUntil(page, (s) => s.flags.includes("pinpoint:started"), 90_000);
+
+  const open = async (id: string, selector: string): Promise<void> => {
+    const end = Date.now() + 60_000;
+    while (!(await page.locator(selector).count()) && Date.now() < end) {
+      await playUntil(page, () => true);
+      await goTo(page, id);
+      await use(page);
+      await page.waitForTimeout(1500);
+    }
+    await expect(page.locator(selector)).toBeVisible();
+    await page.waitForTimeout(500);
+  };
+
+  // Dad's landing table: tap the Snowman's tummy, let the lander drift there, and land.
+  await open("landing-table", ".game.pinpoint");
+  const map = page.locator(".game.pinpoint .map-stage svg");
+  const box = (await map.boundingBox())!;
+  await map.click({ position: { x: (392 / 600) * box.width, y: (255 / 400) * box.height } });
+  await expect(page.locator(".game.pinpoint .gc-ask")).toContainText("Right over its tummy", { timeout: 30_000 });
+  await page.waitForTimeout(400);
+  await beat(page, "bonus-02-pinpoint");
+  await page.keyboard.press("KeyE");
+  await expect(page.locator(".game.pinpoint .got")).toBeVisible({ timeout: 20_000 });
+  await page.locator(".game.pinpoint .got").click();
+  await playUntil(page, (s) => s.flags.includes("pinpoint:land"));
+
+  // Dad's cutters: the camera, the scoop and a piece of tube.
+  await open("surveyor-cutters", ".game.snip");
+  for (let i = 0; i < 3; i += 1) {
+    await page.keyboard.press("KeyE");
+    await page.waitForTimeout(1800);
+  }
+  await expect(page.locator(".game.snip .got")).toBeVisible({ timeout: 10_000 });
+  await beat(page, "bonus-03-snip");
+  await page.locator(".game.snip .got").click();
+  await playUntil(page, (s) => s.flags.includes("pinpoint:snip"));
+
+  // Carry the parts bag up to the sample box by Intrepid.
+  await useUntil(page, "parts-bag", (s) => s.carrying === "bag:surveyor");
+  await beat(page, "bonus-04-bag");
+  await useUntil(page, "sample-box", (s) => s.flags.includes("pinpoint:done"));
+
+  // Milo's scoop arm, home through the lamp light. His stage number does not change.
+  await playUntil(page, () => false, 8_000).catch(() => undefined);
+  await useUntil(page, "parcel", (s) => s.carrying === "part:bonus-surveyor");
+  await goTo(page, "lamp-home");
+  await use(page);
+  await page.waitForFunction(() => (window as unknown as { __poh: Poh }).__poh.worldId() === "home", null, { timeout: 30_000 });
+  await page.waitForTimeout(800);
+  await useUntil(page, "milo", (s) => s.flags.includes("bonus-surveyor:fitted"));
+  await playUntil(page, (s) => s.stamps.includes("bonus-surveyor"), 60_000);
+  await beat(page, "bonus-05-stamp");
+  const end = await state(page);
+  expect(end.miloStage).toBe(3);
+  expect(end.stamps).not.toContain("finale");
+  expect(errors).toEqual([]);
+});
+
+const AFTER_CHAPTER_3 = {
+  version: 1,
+  world: "home",
+  miloStage: 4,
+  carrying: null,
+  delivered: [
+    "to-the-lamp",
+    "a11-letter-descent",
+    "a11-letter-seismometer",
+    "a11-letter-mirrors",
+    "a15-letter-wheels",
+    "a15-letter-seats",
+    "a15-letter-tracks",
+    "opp-letter-bounce",
+    "opp-letter-grinder",
+    "opp-letter-panels",
+    "ing-letter-field",
+    "ing-letter-tracks",
+    "ing-letter-heli",
+  ],
+  stamps: ["prologue", "chapter-1", "chapter-2", "chapter-3", "chapter-4"],
+  flags: ["seen-notebook"],
+};
+
+/** Clicks story cards until `ready` finds something on the page. */
+async function cardsUntil(page: Page, selector: string, timeout = 90_000): Promise<void> {
+  const end = Date.now() + timeout;
+  while (Date.now() < end) {
+    if (await page.locator(selector).count()) return;
+    const got = page.locator(".card .got");
+    if (await got.count()) {
+      await page.waitForTimeout(400);
+      await got.click({ timeout: 2_000 }).catch(() => undefined);
+    }
+    await page.waitForTimeout(250);
+  }
+  throw new Error(`no ${selector}; state ${JSON.stringify(await state(page))}`);
+}
+
+/** The Finale from the moment night falls to the museum, as one player plays it (with the debug walk). */
+async function playFinale(page: Page): Promise<void> {
+  // Night falls and the mailbox flag goes up: Dad's last letter.
+  await playUntil(page, (s) => s.flags.includes("finale:begun"), 60_000);
+  await useUntil(page, "mailbox", (s) => s.carrying === "v1-letter");
+
+  // The dish and Dad's star map: turn toward Voyager 1's real spot tonight, lock on, send.
+  await playUntil(page, () => true);
+  await page.waitForTimeout(1500);
+  await goTo(page, "dish");
+  await use(page);
+  await cardsUntil(page, ".dish svg.map");
+  // Let the map settle after it drops in before measuring it.
+  await page.waitForTimeout(1200);
+  // Tonight's row of the Horizons table (the map's lock-on circle is far wider than a day's drift).
+  const rows = (JSON.parse(readFileSync("src/data/voyager1.json", "utf8")) as { rows: { date: string; ra: number; dec: number }[] }).rows;
+  const today = new Date().toISOString().slice(0, 10);
+  const v = rows.find((r) => r.date === today) ?? (today < rows[0]!.date ? rows[0]! : rows[rows.length - 1]!);
+  const box = (await page.locator(".dish svg.map").boundingBox())!;
+  const K = 720 / 64;
+  const x = 360 - (v.ra - 259) * Math.cos((9 * Math.PI) / 180) * K;
+  const y = 220 - (v.dec - 9) * K;
+  await page.mouse.click(box.x + (x / 720) * box.width, box.y + (y / 440) * box.height);
+  await page.getByRole("button", { name: /Send Dad's letter/ }).click({ timeout: 60_000 });
+  await expect(page.locator(".dish .sent")).toContainText(/would take about \d+ hours/, { timeout: 30_000 });
+  await page.locator(".dish .sent .btn").click();
+  await playUntil(page, (s) => s.delivered.includes("v1-letter"), 30_000);
+
+  // Milo's record, from the dish's little box to Milo.
+  await useUntil(page, "record", (s) => s.carrying === "part:finale", 120_000);
+  await useUntil(page, "milo", (s) => s.miloStage === 5);
+
+  // Dad's saved messages, then Milo's projector.
+  await cardsUntil(page, ".show", 120_000);
+  for (let i = 0; i < 20 && (await page.locator(".show").count()); i++) {
+    await page.locator(".show .btn").click({ timeout: 2_000 }).catch(() => undefined);
+    await page.waitForTimeout(500);
+  }
+
+  // The last page: a sticker and a name from word chips.
+  await cardsUntil(page, ".page", 60_000);
+  await page.locator(".page .sticker").first().click();
+  await page.getByRole("radio", { name: "The Bright" }).click();
+  await page.getByRole("radio", { name: "Comet Trip" }).click();
+  await expect(page.locator(".page .name")).toHaveText("The Bright Comet Trip");
+  await page.getByRole("button", { name: "Done" }).click();
+  await playUntil(page, (s) => s.stamps.includes("finale"), 60_000);
+
+  // The ending, the credits, and the museum.
+  await cardsUntil(page, ".ending", 60_000);
+  await page.getByRole("button", { name: /Credits/ }).click();
+  await expect(page.locator(".ending .roll")).toContainText("JPL");
+  await page.getByRole("button", { name: /Keep exploring/ }).click();
+  await playUntil(page, (s) => s.flags.includes("finale:ended"), 30_000);
+}
+
+test("Finale: from the mailbox to the museum", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "one full playthrough on desktop is enough");
+  test.setTimeout(480_000);
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+  await page.addInitScript((save) => {
+    if (!sessionStorage.getItem("seeded")) {
+      localStorage.setItem("poh.save.v1", JSON.stringify(save));
+      sessionStorage.setItem("seeded", "1");
+    }
+  }, AFTER_CHAPTER_3);
+  await page.goto("/?test&quality=low");
+  await expect(page.locator("html")).toHaveAttribute("data-stage", "ready", { timeout: 60_000 });
+
+  await playFinale(page);
+  const end = await state(page);
+  expect(end.miloStage).toBe(5);
+  expect(end.world).toBe("home");
+  expect(errors).toEqual([]);
+});
+
+test("From the title to the credits", async ({ page }, info) => {
+  test.skip(info.project.name === "phone", "one full playthrough on desktop is enough");
+  test.setTimeout(600_000);
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+
+  // The loader, the light, the title flight and the chain, then a new story from the menu.
+  await page.goto("/?test&intro&quality=low");
+  await expect(page.locator("html")).toHaveAttribute("data-stage", "waiting", { timeout: 60_000 });
+  await expect(page.locator("#boot")).toHaveAttribute("data-prompt", "", { timeout: 10_000 });
+  await page.keyboard.press("Space");
+  await expect(page.locator("html")).toHaveAttribute("data-stage", "title", { timeout: 20_000 });
+  await page.waitForTimeout(400);
+  await page.keyboard.press("KeyX");
+  const chain = page.getByRole("button", { name: /pull the light chain/i });
+  await expect(chain).toBeVisible({ timeout: 20_000 });
+  await chain.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("html")).toHaveAttribute("data-stage", "menu", { timeout: 10_000 });
+  await page.getByRole("button", { name: /New story/ }).click();
+  await page.getByRole("button", { name: "Skip story" }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-stage", "ready", { timeout: 60_000 });
+  await page.getByRole("button", { name: /Let's go!/ }).click();
+
+  // The prologue: Dad's letter from the mailbox to the lamp, and its stamp.
+  await useUntil(page, "mailbox", (s) => s.carrying === "to-the-lamp");
+  await useUntil(page, "lamp", (s) => s.delivered.includes("to-the-lamp"));
+  await playUntil(page, (s) => s.stamps.includes("prologue"), 30_000);
+
+  // The four chapters have their own playthroughs above: here they are stamped with the debug hook.
+  await page.evaluate(
+    (save) => (window as unknown as { __poh: { patch(change: Partial<State>): void } }).__poh.patch(save),
+    { delivered: AFTER_CHAPTER_3.delivered, stamps: AFTER_CHAPTER_3.stamps, miloStage: 4, carrying: null, flags: ["seen-notebook"] },
+  );
+  await page.waitForTimeout(1500);
+  await page.goto("/?test&quality=low");
+  await expect(page.locator("html")).toHaveAttribute("data-stage", "ready", { timeout: 60_000 });
+
+  // The Finale, the ending and the credits.
+  await playFinale(page);
+  expect((await state(page)).stamps).toContain("finale");
+  expect(errors).toEqual([]);
+});
+

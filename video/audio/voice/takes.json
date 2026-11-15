@@ -1,0 +1,1324 @@
+{
+ "intro-1": [
+  {
+   "sentence": "Every evening, in Dad's old workshop, a little lamp still turns itself on.",
+   "kept": 2,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Every evening, in dad's old workshop, a little lamp still turns itself on.",
+     "secs": 4.66,
+     "wps": 2.79,
+     "pitch": 4.6,
+     "loud": 3.87,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Every evening, in Dad's old workshop, a little lamp still turns itself on.",
+     "secs": 4.89,
+     "wps": 2.66,
+     "pitch": 4.88,
+     "loud": 3.81,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "Every evening, in Dad's old workshop, a little lamp still turns itself on.",
+     "secs": 4.8,
+     "wps": 2.71,
+     "pitch": 5.39,
+     "loud": 4.22,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Every evening, in dad's old workshop, a little lamp still turns itself on.",
+     "secs": 4.75,
+     "wps": 2.74,
+     "pitch": 4.48,
+     "loud": 3.99,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "intro-2": [
+  {
+   "sentence": "Hi, we're Hack-street Boys!",
+   "kept": 3,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.4,
+     "said": "Hi, we're Hack Street Boys.",
+     "secs": 1.86,
+     "wps": 2.15,
+     "pitch": 3.09,
+     "loud": 4.46,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.4,
+     "said": "Hi, we're Hack Street Boys.",
+     "secs": 2.14,
+     "wps": 1.87,
+     "pitch": 6.37,
+     "loud": 4.4,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.4,
+     "said": "Hi, we're Hack Street Boys.",
+     "secs": 1.96,
+     "wps": 2.04,
+     "pitch": 5.41,
+     "loud": 4.81,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.4,
+     "said": "Hi, we're HackStreetBoys!",
+     "secs": 2.19,
+     "wps": 1.83,
+     "pitch": 6.87,
+     "loud": 4.54,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "And this is Pieces of Home: a cozy adventure about the machines people left on the Moon and Mars!",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "And this is Pieces of Home, a cozy adventure about the machines people left on the moon and Mars.",
+     "secs": 6.09,
+     "wps": 3.12,
+     "pitch": 4.91,
+     "loud": 3.8,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "And this is Pieces of Home, a cozy adventure about the machines people left on the moon and Mars.",
+     "secs": 6.2,
+     "wps": 3.07,
+     "pitch": 5.22,
+     "loud": 3.45,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "And this is Pieces of Home, a cozy adventure about the machines people left on the moon and Mars.",
+     "secs": 6.56,
+     "wps": 2.9,
+     "pitch": 4.75,
+     "loud": 3.68,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "And this is Pieces of Home, a cozy adventure about the machines people left on the moon and Mars.",
+     "secs": 5.82,
+     "wps": 3.26,
+     "pitch": 4.99,
+     "loud": 3.82,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "prob-1": [
+  {
+   "sentence": "Out there, far from home, people left lots of machines behind: mirrors, rovers, landers, even a tiny helicopter!",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Out there, far from home, people left lots of machines behind. Mirrors, rovers, landers, even a tiny helicopter.",
+     "secs": 7.11,
+     "wps": 2.53,
+     "pitch": 5.6,
+     "loud": 4.39,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Out there, far from home, people left lots of machines behind. Mirrors, rovers, landers, even a tiny helicopter.",
+     "secs": 7.49,
+     "wps": 2.4,
+     "pitch": 5.69,
+     "loud": 4.53,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "Out there, far from home, people left lots of machines behind. Mirrors, rovers, landers, even a tiny helicopter.",
+     "secs": 6.79,
+     "wps": 2.65,
+     "pitch": 4.92,
+     "loud": 4.08,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Out there, far from home, people left lots of machines behind. Mirrors, rovers, landers, even a tiny helicopter.",
+     "secs": 7.05,
+     "wps": 2.55,
+     "pitch": 5.46,
+     "loud": 3.85,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "prob-2": [
+  {
+   "sentence": "Some are still working!",
+   "kept": 2,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Some are still working.",
+     "secs": 1.56,
+     "wps": 2.57,
+     "pitch": 5.16,
+     "loud": 4.32,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Some are still working.",
+     "secs": 1.62,
+     "wps": 2.47,
+     "pitch": 5.05,
+     "loud": 3.94,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "Some are still working.",
+     "secs": 1.22,
+     "wps": 3.28,
+     "pitch": 5.61,
+     "loud": 4.12,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.5,
+     "said": "it's are still working.",
+     "secs": 1.65,
+     "wps": 2.43,
+     "pitch": 5.89,
+     "loud": 6.05,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Scientists still bounce lasers off the mirrors that Apollo 11 left in nineteen sixty-nine.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Scientists still bounce lasers off the mirrors that Apollo 11 left in 1969.",
+     "secs": 4.77,
+     "wps": 3.15,
+     "pitch": 4.28,
+     "loud": 3.85,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Scientists still bounce lasers off the mirrors that Apollo 11 left in 1969.",
+     "secs": 5.09,
+     "wps": 2.95,
+     "pitch": 4.67,
+     "loud": 3.92,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "Scientists still bounce lasers off the mirrors that Apollo 11 left in 1969.",
+     "secs": 5.34,
+     "wps": 2.81,
+     "pitch": 3.64,
+     "loud": 3.93,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.077,
+     "said": "High, scientists still bounce lasers off the mirrors that Apollo 11 left in 1969.",
+     "secs": 5.83,
+     "wps": 2.57,
+     "pitch": 3.73,
+     "loud": 3.77,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "prob-3": [
+  {
+   "sentence": "Others went quiet.",
+   "kept": 2,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "others went quiet.",
+     "secs": 1.18,
+     "wps": 2.55,
+     "pitch": 4.67,
+     "loud": 5.1,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Others went quiet.",
+     "secs": 1.35,
+     "wps": 2.22,
+     "pitch": 6.31,
+     "loud": 5.15,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "others went quiet.",
+     "secs": 1.03,
+     "wps": 2.9,
+     "pitch": 6.53,
+     "loud": 4.99,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.667,
+     "said": "A bus. Others went quiet.",
+     "secs": 1.8,
+     "wps": 1.67,
+     "pitch": 6.97,
+     "loud": 4.76,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "To most kids, they just look like old junk, very far away.",
+   "kept": 3,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "To most kids, they just look like old junk, very far away.",
+     "secs": 3.71,
+     "wps": 3.23,
+     "pitch": 5.32,
+     "loud": 4.23,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "To most kids, they just look like old junk, very far away.",
+     "secs": 3.68,
+     "wps": 3.26,
+     "pitch": 4.1,
+     "loud": 3.82,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "To most kids, they just look like old junk very far away.",
+     "secs": 3.75,
+     "wps": 3.2,
+     "pitch": 4.75,
+     "loud": 3.71,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "To most kids, they just look like old junk, very far away.",
+     "secs": 3.64,
+     "wps": 3.3,
+     "pitch": 5.75,
+     "loud": 4.21,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "But every one of them has a true story.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "But every one of them has a true story.",
+     "secs": 2.69,
+     "wps": 3.35,
+     "pitch": 5.27,
+     "loud": 3.94,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "But every one of them has a true story.",
+     "secs": 2.38,
+     "wps": 3.78,
+     "pitch": 5.18,
+     "loud": 4.59,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "But every one of them has a true story.",
+     "secs": 2.21,
+     "wps": 4.07,
+     "pitch": 5.61,
+     "loud": 4.1,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "But every one of them has a true story.",
+     "secs": 2.32,
+     "wps": 3.88,
+     "pitch": 4.78,
+     "loud": 4.4,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "prob-4": [
+  {
+   "sentence": "Our challenge is called Abandoned but not Forgotten.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Our challenge is called abandoned but not forgotten.",
+     "secs": 3.26,
+     "wps": 2.46,
+     "pitch": 5.04,
+     "loud": 4.14,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Our challenge is called abandoned, but not forgotten.",
+     "secs": 4.0,
+     "wps": 2.0,
+     "pitch": 5.13,
+     "loud": 4.1,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.125,
+     "said": "Hi, our challenge is called Abandoned but Not Forgotten.",
+     "secs": 4.21,
+     "wps": 1.9,
+     "pitch": 4.23,
+     "loud": 4.13,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Our challenge is called Abandoned, but not forgotten.",
+     "secs": 3.65,
+     "wps": 2.19,
+     "pitch": 4.64,
+     "loud": 3.87,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "It asks: how can we tell the stories of NASA's machines on the Moon and Mars?",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "It asks, how can we tell the stories of NASA's machines on the Moon and Mars?",
+     "secs": 3.99,
+     "wps": 4.01,
+     "pitch": 5.34,
+     "loud": 3.82,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "It asks, how can we tell the stories of NASA's machines on the Moon and Mars?",
+     "secs": 4.72,
+     "wps": 3.39,
+     "pitch": 4.81,
+     "loud": 3.98,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "It asks, how can we tell the stories of NASA's machines on the Moon and Mars?",
+     "secs": 4.36,
+     "wps": 3.67,
+     "pitch": 4.79,
+     "loud": 3.62,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "It asks, how can we tell the stories of NASA's machines on the Moon and Mars?",
+     "secs": 4.43,
+     "wps": 3.61,
+     "pitch": 4.73,
+     "loud": 3.41,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "sol-1": [
+  {
+   "sentence": "Our answer?",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "our answer.",
+     "secs": 0.85,
+     "wps": 2.35,
+     "pitch": 5.96,
+     "loud": 3.75,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.5,
+     "said": "or answer?",
+     "secs": 0.73,
+     "wps": 2.74,
+     "pitch": 3.51,
+     "loud": 3.45,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 1.5,
+     "said": "Lame our answer, our answer.",
+     "secs": 1.61,
+     "wps": 1.24,
+     "pitch": 4.64,
+     "loud": 2.78,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "Our answer?",
+     "secs": 1.0,
+     "wps": 2.0,
+     "pitch": 5.42,
+     "loud": 3.24,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "A game with a heart!",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "A game with a heart.",
+     "secs": 1.52,
+     "wps": 3.3,
+     "pitch": 5.55,
+     "loud": 4.23,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "A game with a heart.",
+     "secs": 1.33,
+     "wps": 3.75,
+     "pitch": 5.07,
+     "loud": 3.82,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "A game with a heart.",
+     "secs": 1.31,
+     "wps": 3.82,
+     "pitch": 3.77,
+     "loud": 4.39,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "A game with a heart.",
+     "secs": 1.37,
+     "wps": 3.65,
+     "pitch": 3.82,
+     "loud": 3.39,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Remmy's late dad loved these machines.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.143,
+     "said": "Remy's late dad loved these machines.",
+     "secs": 2.45,
+     "wps": 2.45,
+     "pitch": 5.39,
+     "loud": 4.59,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.143,
+     "said": "Remy's late dad loved these machines.",
+     "secs": 2.37,
+     "wps": 2.53,
+     "pitch": 5.79,
+     "loud": 5.01,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.143,
+     "said": "Remy's late dad loved these machines.",
+     "secs": 2.41,
+     "wps": 2.49,
+     "pitch": 5.02,
+     "loud": 5.24,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.143,
+     "said": "Remy's late dad loved these machines.",
+     "secs": 2.27,
+     "wps": 2.64,
+     "pitch": 5.04,
+     "loud": 4.35,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "He built tiny models of their landing sites, and wrote each one a letter.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "He built tiny models of their landing sites and wrote each one a letter.",
+     "secs": 3.76,
+     "wps": 3.72,
+     "pitch": 5.29,
+     "loud": 3.97,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "He built tiny models of their landing sites and wrote each one a letter.",
+     "secs": 4.03,
+     "wps": 3.47,
+     "pitch": 4.93,
+     "loud": 3.44,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.0,
+     "said": "He built tiny models of their landing sites and wrote each one a letter.",
+     "secs": 3.82,
+     "wps": 3.66,
+     "pitch": 5.28,
+     "loud": 3.9,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.0,
+     "said": "He built tiny models of their landing sites and wrote each one a letter.",
+     "secs": 4.73,
+     "wps": 2.96,
+     "pitch": 5.04,
+     "loud": 4.23,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "sol-2": [
+  {
+   "sentence": "Now Remmy, alone or with up to three friends, delivers his letters, uncovers each machine's true story, and rebuilds his little robot, Milo, one piece at a time.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.034,
+     "said": "Now Remy, alone or with up to three friends, delivers his letters, uncovers each machine's true story, and rebuilds his little robot, Milo, one piece at a time.",
+     "secs": 10.11,
+     "wps": 2.77,
+     "pitch": 5.12,
+     "loud": 4.35,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.034,
+     "said": "Now Remy, alone or with up to three friends, delivers his letters, uncovers each machine's true story, and rebuilds his little robot Milo one piece at a time.",
+     "secs": 9.94,
+     "wps": 2.82,
+     "pitch": 5.13,
+     "loud": 3.85,
+     "over": 0.0
+    },
+    {
+     "take": 2,
+     "wer": 0.034,
+     "said": "Now Remy, alone or with up to three friends, delivers his letters, uncovers each machine's true story, and rebuilds his little robot, Milo, one piece at a time.",
+     "secs": 10.18,
+     "wps": 2.75,
+     "pitch": 5.1,
+     "loud": 3.99,
+     "over": 0.0
+    },
+    {
+     "take": 3,
+     "wer": 0.034,
+     "said": "Now Remy, alone or with up to three friends, delivers his letters, uncovers each machine's true story, and rebuilds his little robot, Milo, one piece at a time.",
+     "secs": 11.32,
+     "wps": 2.47,
+     "pitch": 4.98,
+     "loud": 4.39,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "sol-3": [
+  {
+   "sentence": "It's free, it plays right in your web browser, and it's made for curious players aged ten and up.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.048,
+     "said": "It's free. It plays right in your web browser and it's made for curious players age 10 and up.",
+     "secs": 5.56,
+     "wps": 3.42,
+     "pitch": 4.95,
+     "loud": 3.66,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "It's free! It plays right in your web browser and it's made for curious players aged 10 and up.",
+     "secs": 5.74,
+     "wps": 3.31,
+     "pitch": 5.79,
+     "loud": 4.21,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "demo-1": [
+  {
+   "sentence": "Let's play!",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Let's play!",
+     "secs": 1.21,
+     "wps": 1.65,
+     "pitch": 4.92,
+     "loud": 4.44,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Let's play!",
+     "secs": 1.3,
+     "wps": 1.54,
+     "pitch": 4.58,
+     "loud": 3.46,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "This is the real game.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "This is the real game.",
+     "secs": 1.48,
+     "wps": 3.38,
+     "pitch": 4.8,
+     "loud": 4.33,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "This is the real game.",
+     "secs": 1.56,
+     "wps": 3.21,
+     "pitch": 5.55,
+     "loud": 4.65,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Pull the chain, and the adventure begins!",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Pull the chain and the adventure begins.",
+     "secs": 2.17,
+     "wps": 3.23,
+     "pitch": 4.45,
+     "loud": 3.75,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Pull the chain and the adventure begins!",
+     "secs": 2.83,
+     "wps": 2.47,
+     "pitch": 6.08,
+     "loud": 4.19,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "demo-2": [
+  {
+   "sentence": "Dad's workbench is full of glass domes.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Dad's workbench is full of glass domes.",
+     "secs": 2.89,
+     "wps": 2.43,
+     "pitch": 5.44,
+     "loud": 4.99,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Dad's workbench is full of glass domes.",
+     "secs": 2.58,
+     "wps": 2.72,
+     "pitch": 4.87,
+     "loud": 5.16,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Each one holds a model of a real landing site, labeled: model, not to scale.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Each one holds a model of a real landing site, labeled Model, not to scale.",
+     "secs": 4.96,
+     "wps": 3.02,
+     "pitch": 4.47,
+     "loud": 3.9,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Each one holds a model of a real landing site, labeled model, not to scale.",
+     "secs": 4.81,
+     "wps": 3.12,
+     "pitch": 5.13,
+     "loud": 4.19,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "demo-3": [
+  {
+   "sentence": "Pick the Moon, and whoosh!",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Pick the moon and whoosh!",
+     "secs": 1.78,
+     "wps": 2.81,
+     "pitch": 6.32,
+     "loud": 4.11,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Pick the moon and whoosh!",
+     "secs": 2.03,
+     "wps": 2.46,
+     "pitch": 6.63,
+     "loud": 5.25,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "A little rocket flies you there.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "A little rocket flies you there.",
+     "secs": 1.54,
+     "wps": 3.9,
+     "pitch": 5.18,
+     "loud": 3.63,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "A little rocket flies you there.",
+     "secs": 1.5,
+     "wps": 4.0,
+     "pitch": 4.49,
+     "loud": 3.6,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "demo-4": [
+  {
+   "sentence": "At Tranquility Base, Remmy delivers Dad's letter to the mirrors that Apollo 11 left behind.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "At Tranquility Base, Remi delivers dad's letter to the mirrors that Apollo 11 left behind.",
+     "secs": 5.14,
+     "wps": 2.92,
+     "pitch": 4.42,
+     "loud": 3.54,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.062,
+     "said": "At Tranquility Base, Remy delivers dad's letter to the mirrors that Apollo 11 left behind.",
+     "secs": 5.25,
+     "wps": 2.86,
+     "pitch": 4.56,
+     "loud": 3.55,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "demo-5": [
+  {
+   "sentence": "Then a true story card pops up, with a real NASA photo, and every fact links to its source.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Then a true story card pops up with a real NASA photo and every fact links to its source.",
+     "secs": 6.12,
+     "wps": 3.11,
+     "pitch": 5.35,
+     "loud": 4.84,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Then a true story card pops up with a real NASA photo and every fact links to its source.",
+     "secs": 5.8,
+     "wps": 3.28,
+     "pitch": 6.17,
+     "loud": 4.38,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "demo-6": [
+  {
+   "sentence": "Next, you try the big idea yourself: send a beam of light from Earth to the mirrors, and catch it coming back!",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Next, you try the big idea yourself. Send a beam of light from Earth to the mirrors and catch it coming back.",
+     "secs": 6.53,
+     "wps": 3.37,
+     "pitch": 5.52,
+     "loud": 3.75,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Next, you try the big idea yourself. Send a beam of light from Earth to the mirrors and catch it coming back.",
+     "secs": 6.38,
+     "wps": 3.45,
+     "pitch": 5.02,
+     "loud": 4.17,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "demo-7": [
+  {
+   "sentence": "Bring the part home, and Milo gets brand new eyes!",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Bring the part home, and Milo gets brand new eyes.",
+     "secs": 3.26,
+     "wps": 3.06,
+     "pitch": 4.64,
+     "loud": 3.0,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Bring the part home and Milo gets brand new eyes!",
+     "secs": 3.13,
+     "wps": 3.2,
+     "pitch": 4.07,
+     "loud": 3.03,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Left behind, still answering.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "left behind still answering.",
+     "secs": 1.89,
+     "wps": 2.12,
+     "pitch": 5.24,
+     "loud": 4.5,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.25,
+     "said": "Quay left behind still answering",
+     "secs": 2.51,
+     "wps": 1.59,
+     "pitch": 4.19,
+     "loud": 3.8,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "demo-8": [
+  {
+   "sentence": "On Mars, Opportunity was planned to work for ninety Martian days.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.091,
+     "said": "Hold on Mars! Opportunity was planned to work for 90 Martian days.",
+     "secs": 4.55,
+     "wps": 2.42,
+     "pitch": 4.88,
+     "loud": 4.23,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "On Mars, Opportunity was planned to work for 90 Martian days.",
+     "secs": 3.89,
+     "wps": 2.83,
+     "pitch": 4.6,
+     "loud": 3.6,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "It kept going for more than fourteen years!",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "It kept going for more than 14 years.",
+     "secs": 2.09,
+     "wps": 3.82,
+     "pitch": 3.86,
+     "loud": 3.54,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "It kept going for more than 14 years!",
+     "secs": 2.65,
+     "wps": 3.02,
+     "pitch": 4.91,
+     "loud": 3.92,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "Sometimes the wind blew dust off its solar panels, and gave it more power.",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Sometimes the wind blew dust off its solar panels and gave it more power.",
+     "secs": 3.77,
+     "wps": 3.72,
+     "pitch": 5.23,
+     "loud": 3.74,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Sometimes, the wind blew dust off its solar panels and gave it more power.",
+     "secs": 4.04,
+     "wps": 3.46,
+     "pitch": 4.59,
+     "loud": 3.44,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "demo-9": [
+  {
+   "sentence": "Ingenuity was planned for up to five test flights.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Ingenuity was planned for up to five test flights.",
+     "secs": 2.66,
+     "wps": 3.38,
+     "pitch": 4.1,
+     "loud": 3.65,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Ingenuity was planned for up to five test flights.",
+     "secs": 3.32,
+     "wps": 2.71,
+     "pitch": 5.25,
+     "loud": 3.9,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "It flew seventy-two times!",
+   "kept": 0,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "It flew 72 times.",
+     "secs": 1.83,
+     "wps": 2.73,
+     "pitch": 5.21,
+     "loud": 4.19,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "It flew 72 times!",
+     "secs": 2.49,
+     "wps": 2.01,
+     "pitch": 5.17,
+     "loud": 4.46,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "demo-10": [
+  {
+   "sentence": "Friends can join with a private room code.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Friends can join with a private room code.",
+     "secs": 1.87,
+     "wps": 4.27,
+     "pitch": 4.45,
+     "loud": 2.61,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Friends can join with a private room code,",
+     "secs": 2.22,
+     "wps": 3.61,
+     "pitch": 3.72,
+     "loud": 2.86,
+     "over": 0.0
+    }
+   ]
+  },
+  {
+   "sentence": "No chat, just emotes and kind preset phrases, so it stays safe for kids.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "No chat, just emotes and kind preset phrases, so it stays safe for kids.",
+     "secs": 5.1,
+     "wps": 2.74,
+     "pitch": 4.92,
+     "loud": 4.46,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "No chat, just emotes and kind preset phrases so it stays safe for kids.",
+     "secs": 4.76,
+     "wps": 2.94,
+     "pitch": 5.85,
+     "loud": 4.71,
+     "over": 0.0
+    }
+   ]
+  }
+ ],
+ "demo-11": [
+  {
+   "sentence": "Dad's notebook keeps everything you discover, with real NASA pictures and their credits.",
+   "kept": 1,
+   "takes": [
+    {
+     "take": 0,
+     "wer": 0.0,
+     "said": "Dad's Notebook keeps everything you discover with real NASA pictures and their credits.",
+     "secs": 5.4,
+     "wps": 2.41,
+     "pitch": 4.53,
+     "loud": 3.59,
+     "over": 0.0
+    },
+    {
+     "take": 1,
+     "wer": 0.0,
+     "said": "Dad's Notebook keeps everything you discover with real NASA pictures and their credits.",
+     "secs": 4.97,
+     "wps": 2.62,
+     "pitch": 4.31,
+     "loud": 3.7,
+     "over": 0.0
+    }
+   ]
+  }
+ ]
+}

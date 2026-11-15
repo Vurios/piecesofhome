@@ -1,0 +1,95 @@
+{
+  "title": "Pieces of Home: 30-second demo",
+  "file": "HackstreetBoys_PiecesOfHome_30s.mp4",
+  "note": "NASA's 30-second outline: 0:00 to 0:02 introduce yourself, 0:02 to 0:05 lead us in, 0:05 to 0:10 name your project, 0:10 to 0:20 describe your idea (NASA data shown), 0:20 to 0:30 look into the future. Every claim names its fact IDs in src/data/facts.json. 'text' is what the voice reads; 'caption' is what the screen shows. NASA beats: [NASA] in 'visual'.",
+  "style": "Same smiling storyteller as the local demo video, trailer energy: bright, quick, fun.",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "0:00 to 0:02, Introduce yourself",
+      "lines": [
+        {
+          "id": "g-1",
+          "text": "Hi, we're Hackstreet Boys!",
+          "facts": [],
+          "mood": "bright",
+          "visual": "Dad's lamp switches on in the real game; team name card",
+          "maxSeconds": 1.75
+        }
+      ]
+    },
+    {
+      "id": "problem",
+      "label": "0:02 to 0:05, Lead us in",
+      "lines": [
+        {
+          "id": "g-2",
+          "text": "Abandoned but not Forgotten. Some still work today!",
+          "facts": [
+            "lrrr-still-used",
+            "a11-lrrr-placed"
+          ],
+          "mood": "excited",
+          "visual": "[NASA] Apollo 11 photo with its exact credit; the challenge title; 'Apollo 11's mirrors: still in use today'",
+          "maxSeconds": 2.85,
+          "maxSpeed": 1.2
+        }
+      ]
+    },
+    {
+      "id": "solution",
+      "label": "0:05 to 0:10, Name your project",
+      "lines": [
+        {
+          "id": "g-3",
+          "text": "This is Pieces of Home. Left behind. Still shining.",
+          "facts": [],
+          "mood": "excited",
+          "visual": "the game's title screen builds itself; tagline stamp",
+          "maxSeconds": 4.5
+        }
+      ]
+    },
+    {
+      "id": "demo",
+      "label": "0:10 to 0:20, Describe your idea",
+      "lines": [
+        {
+          "id": "g-4",
+          "text": "Deliver Dad's letters to real machines on the Moon and Mars. Play the science. Rebuild his robot. Every fact and photo, straight from NASA.",
+          "facts": [
+            "a11-lrrr-placed",
+            "opp-landing",
+            "ing-72"
+          ],
+          "mood": "excited",
+          "visual": "real gameplay montage: rocket, letter, [NASA] true story card with a NASA photo and source, Send a Light, Opportunity, Ingenuity; [NASA] data badges",
+          "maxSeconds": 9.55
+        }
+      ]
+    },
+    {
+      "id": "impact",
+      "label": "0:20 to 0:30, Look into the future",
+      "lines": [
+        {
+          "id": "g-5",
+          "text": "Imagine every classroom meeting these machines as friends, not junk.",
+          "facts": [],
+          "mood": "bright",
+          "visual": "friends playing together, Milo, the Voyager 1 dish; framed as a vision",
+          "maxSeconds": 4.6
+        },
+        {
+          "id": "g-6",
+          "text": "Play free today, at pieces of home dot pages dot dev!",
+          "caption": "Play free today, at piecesofhome.pages.dev!",
+          "facts": [],
+          "mood": "bright",
+          "visual": "end card: title, tagline, live URL",
+          "maxSeconds": 3.95
+        }
+      ]
+    }
+  ]
+}

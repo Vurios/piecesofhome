@@ -1,0 +1,11 @@
+{
+  "name": "pieces-of-home-video-kit",
+  "private": true,
+  "type": "module",
+  "description": "Video kit for Pieces of Home: capture, narration, audio render, HyperFrames film.",
+  "license": "MIT",
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "kokoro-js": "^1.2.1"
+  }
+}
